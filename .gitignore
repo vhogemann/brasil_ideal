@@ -5,6 +5,9 @@
 eclipse
 stacktrace.log
 target
+.project
 /plugins
 /web-app/plugins
 /web-app/WEB-INF/classes
+target-eclipse/
+web-app/images/Thumbs.db
