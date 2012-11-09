@@ -5,4 +5,5 @@ class Game {
 	List teams
 	
 	static mapWith = "mongo"
+	
 }
