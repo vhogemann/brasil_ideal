@@ -6,6 +6,8 @@ class Location {
 	String description
 	List location
 	
+	static mapWith = "mongo"
+	
 	static hasMany = [ events:Event ]
 	
 	static mappings = {

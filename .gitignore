@@ -1,10 +1,15 @@
+.project
+.settings
+.classpath
 *.iws
 *Db.properties
 *Db.script
+*.class
 .settings
 eclipse
 stacktrace.log
 target
+target-eclipse
 /plugins
 /web-app/plugins
 /web-app/WEB-INF/classes
