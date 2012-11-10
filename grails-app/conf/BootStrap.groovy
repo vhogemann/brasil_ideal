@@ -26,7 +26,6 @@ class BootStrap {
 
 		Game.findAll().each { game ->
 			def event = new Event(game: game, location: location).save()
-			location.events.add(event).save()
 		}
     }
 	
