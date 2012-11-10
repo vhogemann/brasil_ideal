@@ -1,4 +1,3 @@
-var marker;
 var map;
 var animation = false;
 
@@ -21,15 +20,20 @@ function initialize() {
 	};
 
   map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+ 
+  $('#center').click(function(){
+		center(map);
+	});
 
-  $.ajax ({
-  	  url: config.contextPath + "/location/something/",
-  	  traditional : true,
-  	  data: {lat : map.getCenter().Ya , lng: map.getCenter().Za, zoom:map.getZoom()},
-  	  success : callback
-  });
+  ajax({ 
+  	 url: config.contextPath + "/location/something/",
+  	 traditional : true,
+  	 data: {lat : map.getCenter().Ya , lng: map.getCenter().Za, zoom:map.getZoom()},
+  	 success : findLocations
+  	});
+}
 
-function callback(locations){
+function findLocations(locations){
 	var marker;
 	for(i=0 ; i<locations.length ;i++) {
 		marker = new google.maps.Marker({
@@ -42,6 +46,8 @@ function callback(locations){
 	}	
 }
 
+function ajax(options){
+	$.ajax(options);
 }
 
 
@@ -55,16 +61,10 @@ function turnMarkerReady() {
 
 function activeAnimation() {
 	if (animation) {
-		marker.setAnimation(google.maps.Animation.BOUNCE);
+		this.setAnimation(google.maps.Animation.BOUNCE);
 	} else {
-		marker.setAnimation(null);
+		this.setAnimation(null);
 	}
-
-	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
-	$('#center').click(function(){
-		center(map);
-	});
 }
 
 initialize();
