@@ -15,4 +15,5 @@ class LocationService {
     	def locations = Location.findAllByNameIlikeOrAddressIlike("%${searchKey}%", "%${searchKey}%")
         return locations.collect{ [lat: it.location[0],lng:it.location[1], id: it.id, name: it.name] } as JSON
     }
+	
 }
