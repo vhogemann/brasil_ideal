@@ -25,16 +25,10 @@ class HomeController {
 		render(template: "toaster", model: [event: event, location: location])
 	}
 
-	def find = {
-        def locations = locationService.find(params?.q)
-
-        render locations
-    }
-
-    def near(Float lat1, Float long1, Float lat2, Float long2, String gameId ){
+    def near(Double lat1, Double long1, Double lat2, Double long2, String gameId ){
         def locations
 
-    	def box = [ [ lat1 , long1 ] , [ lat2 , long2 ] ]
+    	def box = [ [ lat2 , long2 ], [ lat1 , long1 ] ]
     	
     	if(gameId)
     		locations = Location.findAllByLocationWithinBoxAndEventGameId(box, gameId)
