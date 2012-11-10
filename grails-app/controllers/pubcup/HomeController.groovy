@@ -8,11 +8,18 @@ class HomeController {
 
     def index() {
 	}
-	
+
+	def showLocationToaster(){
+		def location = Location.get(params.locationId)
+		def initialGameTime = new Date()
+		initialGameTime.hours -= 2
+		def event = location.events.find{ it.game.date > initialGameTime }
+		render(template: "toaster", model: [event: event, location: location])
+	}	
+
 	def showToaster() {
 		def event = Event.get(params.id)
 		def location = event.location
-		
 		render(template: "toaster", model: [event: event, location: location])
 	}
 

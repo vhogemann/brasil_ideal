@@ -65,6 +65,11 @@ function plotLocation(obj){
   	});
 		google.maps.event.addListener(marker, 'mouseover', turnMarkerReady);
 		google.maps.event.addListener(marker,'mouseout', activeAnimation);
+    google.maps.event.addListener(marker,'click', function(){
+      $("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
+        reloadCountDown();
+      });
+    });
 		map.panTo(marker.getPosition());
 }
 
