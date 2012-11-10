@@ -13,7 +13,7 @@ class LocationService {
 
     static find(String searchKey) {
 
-    	def locations = Location.findAllByNameIlike("%${searchKey}%")
+    	def locations = Location.findAllByNameIlike("%${searchKey}%")+Location.findAllByAddressIlike("%${searchKey}%")
 
     	if( locations.size() == 0 ) {
 
@@ -39,9 +39,6 @@ class LocationService {
             def location 	= response.Placemark.Point.coordinates[0]
 
             location 		= [location[1],location[0]]
-
-            println "location: ${location}"
-            println "response: ${response}"
 
             return "[{\"location\": $location, \"name\": \"$name\"}]"
     	} else {
