@@ -31,13 +31,14 @@ class LocationController {
         redirect(action: "show", id: locationInstance.id)
     }
 
+
     def something(){
         def l = [[x:-22.909079507, y:-43.1770692, name:"Jose's Bar"], [x:-22.909079507, y:-42.1770692, name: "Jonh's Bar"]]
         render(contentType:"text/json") {l}
     }
 
-    def show(Long id) {
-        def locationInstance = Location.get(id)
+    def show(String id) {
+        def locationInstance = Location.findById(id)
         if (!locationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), id])
             redirect(action: "list")
@@ -105,15 +106,22 @@ class LocationController {
             redirect(action: "show", id: id)
         }
     }
+
+    def circle() {
+        def center = [params.lat, params.long]
+        def radius = params.radius
+        def locations = Location.findByLocationWithinCircle([center, radius])
+        render(text: locations, contenType: "text/json")
+    }
 	
 	def associate(){
-		def location = pubcup.Location.get(params.location.id)
+		def location = pubcup.Location.get(params.id)
 		return [location: location]
 	}
 	
-	def eventSave(){
+    def eventSave(){
 		def event = new Event(params).save(failOnError: true)
-		println event
 		[event: event]
-	}
+    }
+
 }
