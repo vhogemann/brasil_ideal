@@ -1,29 +1,154 @@
-jQuery(function($) {
-	var url =  new String(window.location);
+var geocoder;
+var map;
+var marker;
+var plotMapControl = {};
+ 
+function initialize() {
+	
+    var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
+    var options = {
+        zoom: 5,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+ 
+    map = new google.maps.Map(document.getElementById("map_canvas"), options);
+ 
+    geocoder = new google.maps.Geocoder();
+ 
+    marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+    });
+ 
+    marker.setPosition(latlng);
+    
+    window.setInterval(function() {
+    	var bound = map.getBounds();
+		var lat1 = bound.ca.f;
+		var long1 = bound.ca.b;
+		var lat2 = bound.ea.f;
+		var long2 = bound.ea.b;
+		ajax({
+		  	 url : config.contextPath + "/home/near/",
+		  	 data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
+		  	 traditional : true,
+		  	 success : plotLocations
+		});	
+	}, 5000);
+}
 
-	var urlparts = url.split("/");
-	var host = urlparts[0]+'//'+urlparts[2]+'/'+urlparts[3];
-	$('.searchKey').autocomplete(host+'/home/find', {
-		dataType: 'json',
-		parse: function(locations) {
-			return $.map(locations, function(location) {
-				return {
-					data: location,
-					value: location.name,
-					result: location.name
-				};
-			});
-		},
-		formatItem: function(location) {
-			return location.name;
-		}
-	}).result(function(event, location, formatted) {
-		var obj = {};
-	 	obj.id = location.id;
-	 	obj.lat = location.location[0];
-	 	obj.lng = location.location[1];
-	 	obj.name = location.name;
-	 	var marker = createMarker(obj);
-	 	map.panTo(marker.getPosition());
-	});
+function plotLocations(locations){
+	for(i=0 ; i<locations.length ;i++) {
+		createMarker(locations[i]);
+	}	
+}
+
+function createMarker(obj){
+	var hash = getKey(obj);
+	var marker = plotMapControl[hash]; 
+	if(!marker){
+		marker = new google.maps.Marker({
+    		position: new google.maps.LatLng(obj.lat,obj.lng),
+    		map: map,
+    		title: obj.name,
+    		animation : google.maps.Animation.DROP
+  		});
+      	google.maps.event.addListener(marker,'click', function(){
+      		$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
+        		reloadCountDown();
+      		});
+    	});
+    	plotMapControl[hash]=marker;
+  	}
+  	return marker;
+}
+
+function getKey(obj){
+	return obj.lat+" "+obj.lng+" "+obj.name;
+}
+
+
+function ajax(options){
+	$.ajax(options);
+}
+
+function center( map ){
+	if( navigator.geolocation ){
+		navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+            map.setCenter(pos);
+            map.setZoom(18);
+		});
+	}
+}
+
+jQuery(function($) {
+	initialize();
+	
+	function loadOnMap(address) {
+        geocoder.geocode({ 'address': address + ', Brasil', 'region': 'BR' }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
+ 
+                    $('#searchKey').val(results[0].formatted_address);
+                    $('#txtLatitude').val(latitude);
+                    $('#txtLongitude').val(longitude);
+ 
+                    var location = new google.maps.LatLng(latitude, longitude);
+                    marker.setPosition(location);
+                    map.setCenter(location);
+                    map.setZoom(16);
+                }
+            }
+        });
+    }
+ 
+    $("#searchKey").blur(function() {
+        if($(this).val() != "")
+        	loadOnMap($(this).val());
+    });
+	
+	google.maps.event.addListener(marker, 'drag', function () {
+        geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                	$('#searchKey').val(results[0].formatted_address);
+                	$('#txtLatitude').val(marker.getPosition().lat());
+                	$('#txtLongitude').val(marker.getPosition().lng());
+                }
+            }
+        });
+    });
+    
+	$("#searchKey").autocomplete({
+        source: function (request, response) {
+            geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
+                response($.map(results, function (item) {
+                    return {
+                        label: item.formatted_address,
+                        value: item.formatted_address,
+                        latitude: item.geometry.location.lat(),
+                        longitude: item.geometry.location.lng()
+                    }
+                }));
+            })
+        },
+        select: function (event, ui) {
+            $("#txtLatitude").val(ui.item.latitude);
+            $("#txtLongitude").val(ui.item.longitude);
+            var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
+            marker.setPosition(location);
+            map.setCenter(location);
+            map.setZoom(16);
+            
+        }
+    });
+	
+	$('#center').click(function(){
+		center(map);
+	}).trigger('click');
+	
 });
