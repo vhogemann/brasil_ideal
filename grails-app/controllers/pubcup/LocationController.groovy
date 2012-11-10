@@ -105,4 +105,15 @@ class LocationController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def associate(){
+		def location = pubcup.Location.get(params.location.id)
+		return [location: location]
+	}
+	
+	def eventSave(){
+		def event = new Event(params).save(failOnError: true)
+		println event
+		[event: event]
+	}
 }
