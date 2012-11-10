@@ -9,7 +9,9 @@ enum TeamsEnum {
 	NewZealand("New Zealand","NZL"),
 	UnitedStates("United States","USA"),
 	Italy("Italy","ITA"),
-	Egypt("Egypt","EGY")
+	Egypt("Egypt","EGY"),
+	Argentina("Argentina", "ARG"),
+	Uruguay("Uruguay", "URU")
 	
 	def name
 	def code
