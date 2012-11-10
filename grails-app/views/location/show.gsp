@@ -63,7 +63,7 @@
 			</div>	
 		</div>
 		<div class="span12">
-			<h3>Outros jogos <a class="btn btn-small"><i class="icon-plus"></i></a></h3> 
+			<h3>Outros jogos <a href="${createLink(controller: 'location', action: 'associate', id: locationInstance?.id)}" class="btn btn-small"><i class="icon-plus"></i></a></h3> 
 			<div class="span6 othersGames">
 				<g:each in="${locationInstance.events}" var="event">
 					<div class="span6">
