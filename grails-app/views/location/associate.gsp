@@ -31,12 +31,18 @@
 			<g:form action="eventSave" class="well">
 				<fieldset>
 					<legend>${location?.name?.encodeAsHTML()}</legend>
-					<g:hiddenField name="location.id" value="${location?.id }"/>
+					<g:hiddenField name="id" value="${location?.id }"/>
 					<ul>
 						<g:each in="${gameList}" var="game" status="i">
-							<li><g:link elementId="loc${i }" action="eventSave" params="['location.id': location?.id, 'game.id': game?.id]"><g:game value="${game}" /></g:link></li>
+							<li>
+								<input type="checkbox" name="gameId" value="${game?.id}" id="gam${i}"/>
+								<label for="gam${i}">
+									<g:game value="${game}" />
+								</label>
+							</li>
 						</g:each>
-					</ul>					
+					</ul>
+					<input class="btn" type="submit" value="${message(code: 'default.button.create.label', default: 'Create')}" />	
 				</fieldset>
 			</g:form>
 		</div>
