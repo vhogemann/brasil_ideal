@@ -7,8 +7,10 @@ import grails.converters.JSON
 class HomeController {
 
 	def locationService
+	def gameService
 
     def index() {
+    	[games: gameService.nextGames()]
 	}
 
 	def showLocationToaster(){
@@ -48,15 +50,7 @@ class HomeController {
     }
 	
 	def nextGames() {
-		def initialGameTime = new Date()
-		initialGameTime.hours -= 2
-		
-		def gameCriteria = Game.createCriteria()
-		def games = gameCriteria.list() {
-			gt("date", initialGameTime)
-			order("date","asc")
-		}
-		
+		def games = gameService.nextGames()
 		render(view:"nextGames", model:[games : games])
 	}
 }
