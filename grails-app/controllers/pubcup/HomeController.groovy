@@ -1,6 +1,8 @@
 package pubcup
 
 import java.awt.GraphicsConfiguration.DefaultBufferCapabilities;
+import grails.converters.JSON
+
 
 class HomeController {
 
@@ -11,4 +13,11 @@ class HomeController {
 		
 		[location: location, event:event]
 	}
+
+	def find(String searchKey) {
+
+        def locations = Location.findAllByNameIlike("%${searchKey}%")
+
+        render locations as JSON
+    }
 }
