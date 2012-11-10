@@ -2,6 +2,7 @@ var geocoder;
 var map;
 var marker;
 var plotMapControl = {};
+var holdNearSearch = false;
  
 function initialize() {
 	
@@ -22,19 +23,24 @@ function initialize() {
     });
  
     marker.setPosition(latlng);
-    
+    google.maps.event.addListener(map,'center_changed', function(){
+        holdNearSearch = false;
+    });
+
     window.setInterval(function() {
-    	var bound = map.getBounds();
-		var lat1 = bound.ca.f;
-		var long1 = bound.ca.b;
-		var lat2 = bound.ea.f;
-		var long2 = bound.ea.b;
-		ajax({
-		  	 url : config.contextPath + "/home/near/",
-		  	 data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
-		  	 traditional : true,
-		  	 success : plotLocations
-		});	
+        if(!holdNearSearch) {
+            var bound = map.getBounds();
+            var lat1 = bound.ca.f;
+            var long1 = bound.ca.b;
+            var lat2 = bound.ea.f;
+            var long2 = bound.ea.b;
+            ajax({
+                url : config.contextPath + "/home/near/",
+                data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
+                traditional : true,
+                success : plotLocations
+            });
+        }	
 	}, 5000);
 }
 
@@ -189,8 +195,15 @@ jQuery(function($) {
 		$('#games-list').fadeToggle('slow');
 	});
 	
-	$('#games-list a').click(function(e) {
+    function clearMarkers(){
+        for(m in plotMapControl){
+            plotMapControl[m].setMap(null);
+            delete plotMapControl[m];
+        }
+    }
 
+	$('#games-list a').click(function(e) {
+        clearMarkers(); holdNearSearch=true;
 		var id 		= this.id.replace(/[a-z_]+/,'');
 		var data 	= {};
 

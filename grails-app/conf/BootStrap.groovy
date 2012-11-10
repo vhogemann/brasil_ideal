@@ -46,9 +46,8 @@ class BootStrap {
         new Location(name: 'Bar do Adonis', description: 'Os pratos são preparados com os melhores produtos de procedência qualificada  para garantir a qualidade do sabor especial que só aqui você encontra.', address: 'Shopping Nova América', location:[22.873012d,-43.270168d]).save()
 
 		Game.list(max: 2).each { game ->
-			Location.findAll().each { loc ->
-				new Event(game: game, location: loc).save()
-			}
+			def loc = Location.findByName('Esch Café')
+			new Event(game: game, location:loc).save()
 		}
     }
 	
