@@ -230,4 +230,15 @@ jQuery(function($) {
 
         e.preventDefault();
     });
+    $(window).trigger("resize");
+    $(window).resize(function() {
+    	var header = $("#header").height();
+    	var footer = $("#footer").height();
+    	var total = $(window).height() - (header + footer);  
+    	$(".map").height(total);
+    });
+    	
+    
+    
+    
 });
