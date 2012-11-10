@@ -157,4 +157,34 @@ class LocationController {
 		}
 	}
 
+    def findAllByGameId() {
+
+        def events = []
+
+        if( params.id != null ) {
+            def game      = Game.get(params.id)
+            events        += Event.createCriteria().list() {
+                eq("game", game)
+            }
+        } else {
+            def games     = Game.findAll()
+
+            games.each { game -> 
+                events        += Event.createCriteria().list() {
+                    eq("game", game)
+                }
+            }
+        }
+
+        def filteredEvents = events.findAll { event ->
+            event.location && event.location.name 
+        }
+
+        render filteredEvents.collect{ event ->
+            def location = event.location
+
+            [lng: location.lng, lat: location.lat, name: location.name] 
+        } as JSON
+    }
+
 }

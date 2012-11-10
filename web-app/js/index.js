@@ -192,5 +192,29 @@ jQuery(function($) {
 	$('#center').click(function(){
 		center(map);
 	}).trigger('click');
+
+	$('#bt_show_game_list').click(function() {
+		$('#games-list').fadeToggle('slow');
+	});
 	
+	$('#games-list a').click(function(e) {
+
+		var id 		= this.id.replace(/[a-z_]+/,'');
+		var data 	= {};
+
+		if( id != null && id != "" )
+			data = { id : id };
+
+		$.ajax({
+			type: "GET",
+			url : config.contextPath + "/location/findAllByGameId",
+		  	data : data,
+		  	dataType: 'json',
+		  	success: function(data) {
+		  		plotLocations(data);
+		  	}
+		});
+
+		e.preventDefault();
+	});
 });
