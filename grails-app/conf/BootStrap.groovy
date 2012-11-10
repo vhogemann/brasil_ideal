@@ -24,7 +24,7 @@ class BootStrap {
         new Location(name: 'Bar do Adão - Tijuca', description: 'Mais de sessenta tipos de pastéis em um só lugar', address: 'Rua dos Artistas, 130', location:[-22.917508d,-43.237832d]).save()
         new Location(name: 'Bar do Adonis', description: 'Os pratos são preparados com os melhores produtos de procedência qualificada  para garantir a qualidade do sabor especial que só aqui você encontra.', address: 'Shopping Nova América', location:[22.873012d,-43.270168d]).save()
 
-		Game.findAll().each { game ->
+		Game.list(max: 2).each { game ->
 			Location.findAll().each { loc ->
 				new Event(game: game, location: loc).save()
 			}
