@@ -22,4 +22,12 @@ modules = {
      dependsOn 'kkcountdown'
      resource url: 'js/countdown.js'
    }
+   autocomplete {
+   		dependsOn 'jquery'
+   		resource url: 'js/jquery.autocomplete.js'
+   }
+   index {
+   		dependsOn 'autocomplete'
+   		resource url: 'js/index.js?457'
+   }
 }

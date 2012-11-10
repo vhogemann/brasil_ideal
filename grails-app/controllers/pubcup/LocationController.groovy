@@ -1,6 +1,7 @@
 package pubcup
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.converters.*
 
 class LocationController {
 
@@ -28,6 +29,12 @@ class LocationController {
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'location.label', default: 'Location'), locationInstance.id])
         redirect(action: "show", id: locationInstance.id)
+    }
+
+
+    def something(){
+        def l = [[x:-22.909079507, y:-43.1770692, name:"Jose's Bar"], [x:-22.909079507, y:-42.1770692, name: "Jonh's Bar"]]
+        render(contentType:"text/json") {l}
     }
 
     def show(String id) {
@@ -106,14 +113,21 @@ class LocationController {
         def locations = Location.findByLocationWithinCircle([center, radius])
         render(text: locations, contenType: "text/json")
     }
-
-    def associate(){
-	def location = pubcup.Location.get(params.location.id)
-	return [location: location]
-    }
+	
+	def associate(){
+		def location = pubcup.Location.get(params.id)
+		return [location: location]
+	}
 	
     def eventSave(){
-	def event = new Event(params).save(failOnError: true)
-	[event: event]
+		def event = new Event(params)
+		if (!event.save(flush: true)) {
+			render(view: "associate", model: [location: Location.get(params.location.id)])
+			return
+		}
+
+		flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), event.id])
+		redirect(action: "show", id: event.location.id)
     }
+
 }
