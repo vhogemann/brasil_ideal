@@ -27,13 +27,17 @@ class LocationController {
 		bindData(locationInstance, params, [exclude: ['location', 'lat', 'lng']])
 		def locs = [Double.parseDouble(params.lat), Double.parseDouble(params.lng)]
 		locationInstance.location = locs
-        if (!locationInstance.save(flush: true)) {
+		def gameList = params.list('gameId').collect{ Game.get(it) }
+		
+        if (!gameList || !locationInstance.save(flush: true)) {
+			if(!gameList){
+				flash.message = message(code: 'location.choose.game.error', default: 'Choose a game!')
+			}
             render(view: "create", model: [locationInstance: locationInstance])
             return
         }
 		
-		params.list('gameId').each{ gameId ->
-			def game = Game.get(gameId)
+		gameList.each{ game ->
 			if(game && locationInstance){
 				new Event(game: game, location: locationInstance).save()
 			}

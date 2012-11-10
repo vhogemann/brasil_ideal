@@ -21,7 +21,6 @@
 <div class="control-group fieldcontain ${hasErrors(bean: locationInstance, field: 'address', 'error')} ">
 	<label for="address" class="control-label">
 		<g:message code="location.address.label" default="Address" />
-
 	</label>
 	<div class="controls">
 		<g:textField name="address" value="${params?.address}" />
