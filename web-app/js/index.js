@@ -36,6 +36,8 @@ function initialize() {
 		  	 success : plotLocations
 		});	
 	}, 5000);
+    
+    console.log( "Mapa iniciado em "+$(map) )
 }
 
 function plotLocations(locations){
