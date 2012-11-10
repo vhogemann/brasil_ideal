@@ -27,7 +27,6 @@ class HomeController {
 
 	def find = {
         def locations = locationService.find(params?.q)
-
         render locations
     }
 
