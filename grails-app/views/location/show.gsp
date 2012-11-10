@@ -6,9 +6,67 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'location.label', default: 'Location')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<style type="text/css">
+			.largeImage{
+				width: 100%;
+			}
+			.othersGames{
+				border: solid 1px;
+				padding: 10px;
+			}
+			.vs{
+				float:left;
+				margin: 0px 20px 0px 20px;
+				font-weight: bold;
+				font-size: 18px; 
+				padding: 10px;
+			}
+			.teams{
+				float:left;
+				width: 40px;
+				 
+			}
+			.team{
+				height: 40px;
+				margin-left: 0px;
+			}
+			.span1, .span2{
+				margin-left: 0px;
+				padding: 0px;
+				border: solid 1px;
+			}
+		</style>
 	</head>
-	<body>
-		<a href="#show-location" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+	<body class="container">
+	
+	<blockquote>
+			<h1>${locationInstance.name}</h1>
+	</blockquote>		
+		<div class="row-fluid">
+			<div class="span7">
+					<blockquote>
+						<p>${locationInstance.description}</p>
+					</blockquote>	
+			</div>
+			<div class="span4">
+				<img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="img-polaroid largeImage"/>
+			</div>	
+		</div>
+		<div class="span12">
+			<h3>Outros jogos</h3>
+		
+			<div class="span11 othersGames">
+				<div class="span10">
+					<g:each in="${locationInstance.events}" var="event">
+						<g:each in="${event.game.teams}" var="team"></g:each>	
+						<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+						<div class="vs">Brasil VS Argentina</div>
+						<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+					</g:each>
+				</div>
+			</div>			
+		</div>	
+		<%--<a href="#show-location" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -16,7 +74,7 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
-		<div id="show-location" class="content scaffold-show" role="main">
+		
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -61,5 +119,5 @@
 				</fieldset>
 			</g:form>
 		</div>
-	</body>
+	--%></body>
 </html>
