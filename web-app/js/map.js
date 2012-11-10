@@ -46,6 +46,17 @@ function findLocations(locations){
 	}	
 }
 
+
+function plotLocation(obj){
+	var marker = new google.maps.Marker({
+    	position: new google.maps.LatLng(obj.location[0],obj.location[1]),
+    	map: map,
+    	title: obj.name,
+  	});
+		google.maps.event.addListener(marker, 'mouseover', turnMarkerReady);
+		google.maps.event.addListener(marker,'mouseout', activeAnimation);
+}
+
 function ajax(options){
 	$.ajax(options);
 }
