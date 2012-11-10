@@ -7,7 +7,7 @@ class UrlMappings {
 			}
 		}
 		"/near"(controller: "home", action: "near")
-		"/"(controller: "home", action:"index")
+		"/"(controller: "home", action: "index")
 		"500"(view:'/error')
 
 		// TODO: somente para testar o js

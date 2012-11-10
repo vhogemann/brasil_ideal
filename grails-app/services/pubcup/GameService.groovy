@@ -11,4 +11,5 @@ class GameService {
 			order("date","asc")
 		}
     }
+    
 }

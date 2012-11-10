@@ -51,7 +51,6 @@ class HomeController {
 	
 	def nextGames() {
 		def games = gameService.nextGames()
-		
 		render(view:"nextGames", model:[games : games])
 	}
 }
