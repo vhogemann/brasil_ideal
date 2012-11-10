@@ -1,4 +1,4 @@
-$(function(){
+function reloadCountDown(){
 	$(".kkcount-down").kkcountdown({
 	 	dayText : ' day ',
 		daysText : ' days ',
@@ -8,4 +8,4 @@ $(function(){
 		displayZeroDays : false,
 		oneDayClass : 'one-day'
 	});	
-});
+}

@@ -6,20 +6,29 @@ import grails.converters.JSON
 
 class HomeController {
 
+	def locationService
+
     def index() {
 	}
-	
+
+	def showLocationToaster(){
+		def location = Location.get(params.locationId)
+		def initialGameTime = new Date()
+		initialGameTime.hours -= 2
+		def event = location.events.find{ it.game.date > initialGameTime }
+		render(template: "toaster", model: [event: event, location: location])
+	}	
+
 	def showToaster() {
 		def event = Event.get(params.id)
 		def location = event.location
-		
 		render(template: "toaster", model: [event: event, location: location])
 	}
 
 	def find = {
-        def locations = Location.findAllByNameIlike("%${params?.q}%")
+        def locations = locationService.find(params?.q)
 
-        render locations.collect{ [location: it.location, id: it.id, name: it.name] } as JSON
+        render locations
     }
 
     def near(Float lat1, Float long1, Float lat2, Float long2, String gameId ){

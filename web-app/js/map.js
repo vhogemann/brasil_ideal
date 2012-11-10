@@ -45,11 +45,11 @@ window.setInterval(function() {
 function plotLocations(locations){
 	var marker;
 	for(i=0 ; i<locations.length ;i++) {
+	   var hash = getKey(name,lat,lng);
 	   if(!plotMapControl[hash]){
 	   	 var name = locations[i].name ;
 		 var lat = locations[i].lat;
 		 var lng = locations[i].lng;
-		 var hash = getKey(name,lat,lng);
 	   	 marker = new google.maps.Marker({
     	 position: new google.maps.LatLng(lat, lng),
     	 map: map,
@@ -62,6 +62,19 @@ function plotLocations(locations){
 	}	
 }
 
+function getKey(name, lat, lng) {
+	var keyAsString = lat + lng + name;
+	var lenght = keyAsString.lenght;
+	var key = 0;
+	
+	var i;
+	for(i=0; i < lenght; i++) {
+		key += keyAsString[i].charCodeAt(0) * 31 ^ (lenght - i);
+	}
+	return key;
+}	
+
+
 function getKey(name,lat,lng){
 	return lat+" "+lng+" "+name;
 }
@@ -69,23 +82,6 @@ function getKey(name,lat,lng){
 
 function ajax(options){
 	$.ajax(options);
-}
-
-
-function turnMarkerReady() {
-  if(!animation){
-  	animation=true;
-  } else {
-  	animation=false;
-  }
-}
-
-function activeAnimation() {
-	if (animation) {
-		this.setAnimation(google.maps.Animation.BOUNCE);
-	} else {
-		this.setAnimation(null);
-	}
 }
 
 initialize();
