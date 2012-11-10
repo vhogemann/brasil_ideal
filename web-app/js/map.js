@@ -60,9 +60,12 @@ function createMarker(obj){
     		animation : google.maps.Animation.DROP
   		});
       	google.maps.event.addListener(marker,'click', function(){
-      		$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
-        		reloadCountDown();
-      		});
+          $("#toasterPlace").html($('#spinner').html());
+          if(obj.id){
+            $("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
+              reloadCountDown();
+            });  
+          }
     	});
     	plotMapControl[hash]=marker;
   	}
