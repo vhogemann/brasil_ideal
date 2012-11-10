@@ -13,8 +13,6 @@ class HomeController {
 		def event = Event.get(params.id)
 		def location = event.location
 		
-		println ">>" + event.game
-		
 		render(template: "toaster", model: [event: event, location: location])
 	}
 
