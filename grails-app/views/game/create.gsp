@@ -1,4 +1,5 @@
 <%@ page import="pubcup.Game" %>
+<%@ page import="pubcup.TeamsEnum" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,9 +27,17 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form action="save" >
+			<g:form action="save" method="post">
 				<fieldset class="form">
 					<g:render template="form"/>
+					<ul>
+						<g:each in="${TeamsEnum.values()}" var="team" status="i">
+							<li>
+								<input type="checkbox" name="teams" value="${team?.name}" id="team${i}"/>
+								<label for="team${i}">${team.name}</label>
+							</li>
+						</g:each>
+					</ul>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

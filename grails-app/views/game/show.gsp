@@ -41,6 +41,16 @@
 					aria-labelledby="date-label"><g:formatDate
 							date="${gameInstance?.date}" /></span></li>
 			</g:if>
+			<li class="fieldcontain">
+				<div class="vs">
+					<span id="date-label" class="property-label"> 
+						<g:message code="game.teams.label" default="Teams" />
+					</span>
+					<span class="property-value" aria-labelledby="date-label">
+						${gameInstance.teams.get(0)} VS ${gameInstance.teams.get(1)}
+					</span>
+				</div>
+			</li>
 
 		</ol>
 		<g:form>
