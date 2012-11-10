@@ -1,5 +1,7 @@
 package pubcup
 
+import grails.converters.JSON
+
 class HomeController {
 
     def index() {
@@ -7,4 +9,11 @@ class HomeController {
 		def event = location.getEvents().get(0)
 		def game = event.getGame() 
 	}
+
+	def find(String searchKey) {
+
+        def locations = Location.findAllByNameIlike("%${searchKey}%")
+
+        render locations as JSON
+    }
 }

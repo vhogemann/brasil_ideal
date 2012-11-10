@@ -106,4 +106,14 @@ class LocationController {
         def locations = Location.findByLocationWithinCircle([center, radius])
         render(text: locations, contenType: "text/json")
     }
+
+    def associate(){
+	def location = pubcup.Location.get(params.location.id)
+	return [location: location]
+    }
+	
+    def eventSave(){
+	def event = new Event(params).save(failOnError: true)
+	[event: event]
+    }
 }
