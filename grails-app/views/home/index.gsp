@@ -15,6 +15,10 @@
 			<input type="button" id="center" value="Centralizar"/>
 			<div id="map_canvas" style="width:640px; height:480px;">&nbsp;</div>
 			<div id="toasterPlace"></div>
+			<div id="new-location-template" style="display: none">
+				<div class="address"></div>
+				<a href="#replaceMe" class="btn btn-create"><g:message code="default.button.create.label" default="Create" /></a>
+			</div>
 		</form>
 	</body>
 </html>

@@ -44,6 +44,13 @@ function plotLocations(locations){
 	}	
 }
 
+function loadToasterCreate(args){
+    var template = $("#new-location-template");
+    template.find(".address").text(args.name);
+    template.find(".btn-create").attr('href', config.contextPath + "/location/create?lat=" + args.lat + "&lng=" + args.lng + "&address=" + args.name);
+    $("#toasterPlace").html(template.html());
+}
+
 function createMarker(obj){
 	var hash = getKey(obj);
 	var marker = plotMapControl[hash]; 
@@ -55,9 +62,13 @@ function createMarker(obj){
     		animation : google.maps.Animation.DROP
   		});
       	google.maps.event.addListener(marker,'click', function(){
-      		$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
-        		reloadCountDown();
-      		});
+            if(obj.id){
+                $("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
+                    reloadCountDown();
+                });
+            }else{
+                loadToasterCreate(obj);
+            }
     	});
     	plotMapControl[hash]=marker;
   	}
@@ -125,24 +136,47 @@ jQuery(function($) {
     
 	$("#searchKey").autocomplete({
         source: function (request, response) {
-            geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
-                response($.map(results, function (item) {
-                    return {
-                        label: item.formatted_address,
-                        value: item.formatted_address,
-                        latitude: item.geometry.location.lat(),
-                        longitude: item.geometry.location.lng()
-                    }
-                }));
-            })
+        	ajax({
+        		url: config.contextPath + '/home/find',
+        		traditional: true,
+        		data: {q : request.term},
+        		success : function(data) {
+	        		geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
+	                	var r = $.map(data, function(item){
+	                		return {
+	                			label: item.name,
+	                			value: item.name,
+	                			latitude: item.lat,
+	                			longitude: item.lng
+	                		}
+	                	});
+	                	var googleRs = $.map(results, function (item) {
+	                    	return {
+	                        	label: item.formatted_address,
+	                        	value: item.formatted_address,
+	                        	latitude: item.geometry.location.lat(),
+	                        	longitude: item.geometry.location.lng()
+	                    	}
+	                	});
+	                	response(r.concat(googleRs));
+	            	});
+        		}
+        	});
         },
         select: function (event, ui) {
             $("#txtLatitude").val(ui.item.latitude);
             $("#txtLongitude").val(ui.item.longitude);
+            var locationData = {
+                lat: ui.item.latitude,
+                lng: ui.item.longitude,
+                name: ui.item.label
+            };
+            createMarker(locationData);
             var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
-            marker.setPosition(location);
+            //marker.setPosition(location);
             map.setCenter(location);
             map.setZoom(16);
+            loadToasterCreate(locationData);
             
         }
     });
