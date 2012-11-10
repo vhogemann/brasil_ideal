@@ -7,7 +7,7 @@
 		<r:require module="googlemaps"/>
 	</head>
 	<body>	
-		<div id="map_canvas" style="width:2000px; height:2000px"></div>
+		<div id="map_canvas" style="width:70%; height:70%; position:absolute"></div>
 	</body>
 
 </html>
