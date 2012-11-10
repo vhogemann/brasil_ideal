@@ -18,6 +18,10 @@ jQuery(function($) {
 			return location.name;
 		}
 	}).result(function(event, location, formatted) {
-	 	plotLocations([location]);
+	 	var obj = {};
+	 	obj.lat = location.location[0];
+	 	obj.lng = location.location[1];
+	 	obj.name = location.name;
+	 	plotLocations([obj]);
 	});
 });

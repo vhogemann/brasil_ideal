@@ -62,19 +62,6 @@ function plotLocations(locations){
 	}	
 }
 
-function getKey(name, lat, lng) {
-	var keyAsString = lat + lng + name;
-	var lenght = keyAsString.lenght;
-	var key = 0;
-	
-	var i;
-	for(i=0; i < lenght; i++) {
-		key += keyAsString[i].charCodeAt(0) * 31 ^ (lenght - i);
-	}
-	return key;
-}	
-
-
 function getKey(name,lat,lng){
 	return lat+" "+lng+" "+name;
 }
