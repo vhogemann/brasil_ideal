@@ -30,8 +30,8 @@ class LocationController {
         redirect(action: "show", id: locationInstance.id)
     }
 
-    def show(Long id) {
-        def locationInstance = Location.get(id)
+    def show(String id) {
+        def locationInstance = Location.findById(id)
         if (!locationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'location.label', default: 'Location'), id])
             redirect(action: "list")
