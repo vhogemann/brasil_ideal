@@ -17,7 +17,8 @@ class LocationController {
     }
 
     def create() {
-        [locationInstance: new Location(params)]
+        println params
+        [params:params,locationInstance: new Location(params)]
     }
 
     def save() {
@@ -134,14 +135,26 @@ class LocationController {
 	}
 	
     def eventSave(){
-		def event = new Event(params)
-		if (!event.save(flush: true)) {
-			render(view: "associate", model: [location: Location.get(params.location.id)])
-			return
-		}
-
-		flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), event.id])
-		redirect(action: "show", id: event.location.id)
+        def location = Location.get(params.id)
+        params.list("gameId").each{ gameId ->
+            def game = Game.get(gameId)
+            if(game && location){
+                new Event(location: location, game: game).save(flush: true)
+            }    
+        }
+		flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), ''])
+		redirect(action: "show", id: location.id)
     }
+	
+	def updateDescription(String locationId, String description) {
+		try {
+			def location = Location.get(locationId)
+			location.description = description
+			location.save()
+			render(text: "true")
+		} catch (Exception e) {
+			render(text: "false")
+		}
+	}
 
 }
