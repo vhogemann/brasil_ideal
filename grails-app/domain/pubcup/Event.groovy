@@ -3,8 +3,7 @@ package pubcup
 class Event {
 	
 	static belongsTo = [location: Location]
-	
-	Game game
+	static hasOne = [game:Game]
 	
 	static mapWith = "mongo"
 	
