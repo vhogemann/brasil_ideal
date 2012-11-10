@@ -29,13 +29,13 @@
 			</g:hasErrors>
 			<g:form action="eventSave" class="well">
 				<fieldset>
-					<legend>Local: ${location?.name?.encodeAsHTML()}</legend>
+					<legend>${location?.name?.encodeAsHTML()}</legend>
 					<g:hiddenField name="location.id" value="${location?.id }"/>
 					<div>
 						<g:select name="game.id" from="${Game.list() }" optionKey="id"  />
 					</div>
 					<div>
-						<g:submitButton name="cadastrar" value="Cadastrar" class="btn" />
+						<g:submitButton name="cadastrar" value="${message(code: 'default.button.create.label') }" class="btn" />
 					</div>
 				</fieldset>
 			</g:form>
