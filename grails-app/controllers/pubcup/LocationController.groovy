@@ -128,5 +128,16 @@ class LocationController {
 		flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), event.id])
 		redirect(action: "show", id: event.location.id)
     }
+	
+	def updateDescription(String locationId, String description) {
+		try {
+			def location = Location.get(locationId)
+			location.description = description
+			location.save()
+			render(text: "true")
+		} catch (Exception e) {
+			render(text: "false")
+		}
+	}
 
 }
