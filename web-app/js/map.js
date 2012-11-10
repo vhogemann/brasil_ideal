@@ -1,5 +1,6 @@
 var map;
 var animation = false;
+var plotMapControl;
 
 function center( map ){
 	if( navigator.geolocation ){
@@ -24,23 +25,25 @@ function initialize() {
   $('#center').click(function(){
 		center(map);
 	});
+	 
 
-  google.maps.event.addListener(map,'bounds_changed', function(){
-  	 var bound = this.getBounds();
-  	 var lat1 = bound.ca.f;
-  	 var long1 = bound.ca.b;
-  	 var lat2 = bound.ea.f;
-  	 var long2 = bound.ea.b;
-  	 
-  	 ajax({
-  	 	url : config.contextPath + "/home/near/",
-  	 	data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
-  	 	traditional : true,
-  	 	success : function(data){
-  	 		console.log(data);
-  	 	}
-  	 });
-  });
+window.setTimeout(function() {
+    google.maps.event.addListener(map,'bounds_changed', function(){
+		var map = this;
+  	 	var bound = map.getBounds();
+		  	 var lat1 = bound.ca.f;
+		  	 var long1 = bound.ca.b;
+		  	 var lat2 = bound.ea.f;
+		  	 var long2 = bound.ea.b;
+
+		 	ajax({
+		  	 	url : config.contextPath + "/home/near/",
+		  	 	data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
+		  	 	traditional : true,
+		  	 	success : findLocations
+		  	 });
+	});	
+}, 5000);
 }
 
 function findLocations(locations){
@@ -51,20 +54,17 @@ function findLocations(locations){
     	map: map,
     	title: locations[i].name,
   	});
-		google.maps.event.addListener(marker, 'mouseover', turnMarkerReady);
-		google.maps.event.addListener(marker,'mouseout', activeAnimation);
 	}	
 }
 
 
 function plotLocation(obj){
+	console.log(obj);
 	var marker = new google.maps.Marker({
     	position: new google.maps.LatLng(obj.location[0],obj.location[1]),
     	map: map,
     	title: obj.name,
   	});
-		google.maps.event.addListener(marker, 'mouseover', turnMarkerReady);
-		google.maps.event.addListener(marker,'mouseout', activeAnimation);
 		map.panTo(marker.getPosition());
 }
 
