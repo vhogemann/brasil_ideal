@@ -27,22 +27,20 @@ function initialize() {
 	});
 	 
 
-window.setTimeout(function() {
-    google.maps.event.addListener(map,'bounds_changed', function(){
-		var map = this;
+window.setInterval(function() {
+    	
   	 	var bound = map.getBounds();
-		  	 var lat1 = bound.ca.f;
-		  	 var long1 = bound.ca.b;
-		  	 var lat2 = bound.ea.f;
-		  	 var long2 = bound.ea.b;
-
+		var lat1 = bound.ca.f;
+		var long1 = bound.ca.b;
+		var lat2 = bound.ea.f;
+		var long2 = bound.ea.b;
+		console.log(bound);
 		 	ajax({
 		  	 	url : config.contextPath + "/home/near/",
 		  	 	data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
 		  	 	traditional : true,
 		  	 	success : findLocations
-		  	 });
-	});	
+		  	 });	
 }, 5000);
 }
 
