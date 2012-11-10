@@ -1,4 +1,5 @@
 .project
+/bin
 .settings
 .classpath
 *.iws
