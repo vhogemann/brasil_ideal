@@ -13,7 +13,7 @@ class LocationService {
 
     static find(String searchKey) {
 
-    	def locations = Location.findAllByNameIlike("%${searchKey}%")+Location.findAllByAddressIlike("%${searchKey}%")
+    	def locations = Location.findAllByNameIlikeOrAddressIlike("%${searchKey}%", "%${searchKey}%")
 
     	if( locations.size() == 0 ) {
 
