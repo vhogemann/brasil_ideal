@@ -18,6 +18,6 @@ jQuery(function($) {
 			return location.name;
 		}
 	}).result(function(event, location, formatted) {
-		
+	 	plotLocation(location);
 	});
 });
