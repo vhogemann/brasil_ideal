@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<input type="button" id="center" value="Centralizar"/>
-		<div id="map_canvas" style="width:2000px; height:2000px"></div>
+		<div id="map_canvas" style="width:640px; height:480px;">&nbsp;</div>
 	</body>
 
 </html>
