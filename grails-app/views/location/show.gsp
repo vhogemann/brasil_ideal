@@ -1,5 +1,5 @@
-
 <%@ page import="pubcup.Location" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -46,6 +46,54 @@
 				border: 1px solid;
 			}
 		</style>
+		
+		<r:require module="jquery" />
+		<script type="text/javascript">
+			function turnEditable(obj) {
+				var content = $(obj).html();
+				
+				var textArea = jQuery('<textarea />');
+				$(textArea).attr('name','locationDescription');
+				$(textArea).attr('id','locationDescription');
+				$(textArea).val(content);
+
+				var submitButton = jQuery('<a />');
+				$(submitButton).attr( 'href','javascript:updateLocationDescription();' );
+				$(submitButton).attr( 'name','updateButton' );
+				$(submitButton).attr( 'id','updateButton' );
+				$(submitButton).html( 'Atualizar descrição' );
+
+				$(submitButton).insertAfter( $(obj) );
+				$(textArea).insertAfter( $(obj) );
+				$(obj).remove();
+				$("#editMessage").hide();
+			}
+
+			function updateLocationDescription() {
+				var locationDescription = $("#locationDescription").val();
+
+				$.ajax({
+				  	 url : config.contextPath + "/location/updateDescription/",
+				  	 data : {locationId: "${locationInstance.id}", description: locationDescription},
+				  	 traditional : true,
+				  	 success : 	function(result) {
+					  	 			if(result == "true") {
+						  	 			var textArea = $("#locationDescription");
+										var newDescription = $(textArea).val();
+
+										var p = jQuery("<p/>");
+										$(p).html( newDescription );
+										$(p).attr('onclick','turnEditable(this)');
+										$(p).insertBefore( $(textArea) );
+
+										$(textArea).remove();
+										$("#updateButton").remove();
+										$("#editMessage").show();
+						  	 		}
+					 			}
+				 });
+			}
+		</script>
 	</head>
 	<body class="container">
 	
@@ -55,7 +103,8 @@
 		<div class="row-fluid">
 			<div class="span7">
 					<blockquote>
-						<p>${locationInstance.description}</p>
+						<p onclick="turnEditable(this)">${locationInstance.description}</p>
+						<span id="editMessage"><g:message code="location.description.edit" /></span>
 					</blockquote>	
 			</div>
 			<div class="span4">
@@ -75,58 +124,5 @@
 				</g:each>
 			</div>			
 		</div>	
-		<%--<a href="#show-location" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list location">
-			
-				<g:if test="${locationInstance?.description}">
-				<li class="fieldcontain">
-					<span id="description-label" class="property-label"><g:message code="location.description.label" default="Description" /></span>
-					
-						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${locationInstance}" field="description"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${locationInstance?.events}">
-				<li class="fieldcontain">
-					<span id="events-label" class="property-label"><g:message code="location.events.label" default="Events" /></span>
-					
-						<g:each in="${locationInstance.events}" var="e">
-						<span class="property-value" aria-labelledby="events-label"><g:link controller="event" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${locationInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="location.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${locationInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${locationInstance?.id}" />
-					<g:link class="edit" action="edit" id="${locationInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	--%></body>
+	</body>
 </html>

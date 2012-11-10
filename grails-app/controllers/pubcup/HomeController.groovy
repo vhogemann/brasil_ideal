@@ -25,6 +25,11 @@ class HomeController {
 		render(template: "toaster", model: [event: event, location: location])
 	}
 
+	def find = {
+        def locations = locationService.find(params?.q)
+        render locations
+    }
+
     def near(Double lat1, Double long1, Double lat2, Double long2, String gameId ){
         def locations
 
