@@ -24,10 +24,10 @@ modules = {
    }
    autocomplete {
    		dependsOn 'jquery'
-   		resource url: 'js/jquery.autocomplete.js'
+   		resource url: 'js/jquery-ui-1.9.1.custom.min.js'
    }
    index {
-   		dependsOn 'autocomplete'
-   		resource url: 'js/index.js?457'
+   		dependsOn 'autocomplete','countdown'
+   		resource url: 'js/index.js?13213123'
    }
 }
