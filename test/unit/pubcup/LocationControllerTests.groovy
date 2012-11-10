@@ -152,4 +152,11 @@ class LocationControllerTests {
         assert Location.get(location.id) == null
         assert response.redirectedUrl == '/location/list'
     }
+
+    void testFind() {
+        controller.find()
+
+        assert flash.message != null
+        assert response.redirectUrl == '/home/index'
+    }
 }

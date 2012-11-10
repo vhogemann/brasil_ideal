@@ -4,6 +4,7 @@ class Location {
 	String id
 	String name
 	String description
+	String address
 	List location
 	
 	static mapWith = "mongo"
