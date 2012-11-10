@@ -5,7 +5,7 @@ class Game {
 	Date date
 	List teams
 	
-	static belongsTo = [event:Event]
+	static belongsTo = [event:Location]
 	
 	String toString(){
 		teams.join(" x ")
