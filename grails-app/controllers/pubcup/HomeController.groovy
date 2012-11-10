@@ -6,6 +6,8 @@ import grails.converters.JSON
 
 class HomeController {
 
+	def locationService
+
     def index() {
 	}
 	
@@ -17,9 +19,9 @@ class HomeController {
 	}
 
 	def find = {
-        def locations = Location.findAllByNameIlike("%${params?.q}%")
+        def locations = locationService.find(params?.q)
 
-        render locations.collect{ [location: it.location, id: it.id, name: it.name] } as JSON
+        render locations
     }
 
     def near(Float lat1, Float long1, Float lat2, Float long2, String gameId ){
