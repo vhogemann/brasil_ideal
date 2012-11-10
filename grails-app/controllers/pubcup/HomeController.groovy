@@ -14,10 +14,9 @@ class HomeController {
 		[location: location, event:event]*/
 	}
 
-	def find(String searchKey) {
+	def find = {
+        def locations = Location.findAllByNameIlike("%${params?.q}%")
 
-        def locations = Location.findAllByNameIlike("%${searchKey}%")
-
-        render locations as JSON
+        render locations.collect{ [location: it.location, id: it.id, name: it.name] } as JSON
     }
 }
