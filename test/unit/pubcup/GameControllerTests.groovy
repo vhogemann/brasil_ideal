@@ -1,7 +1,5 @@
 package pubcup
 
-
-
 import org.junit.*
 import grails.test.mixin.*
 

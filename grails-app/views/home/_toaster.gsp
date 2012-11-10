@@ -9,6 +9,7 @@
 		<div id="team2">${event?.game?.teamBName()}</div>
 	</div>
 	<div class="toastDateGroup">
-		
+		<span id="toastDate">Data : ${event?.game?.formattedDate()}</span>
+		<span id="toastTime">Horário : ${event?.game?.formattedTime()}</span>
 	</div>
 </div>
