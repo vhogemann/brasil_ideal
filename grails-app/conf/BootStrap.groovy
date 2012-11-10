@@ -11,11 +11,10 @@ class BootStrap {
     	def gameTeams	= []
     	
     	teams.eachWithIndex { team, i ->
-    		gameTeams << team
-    		if((i+1)%2==0) {
+    		gameTeams.add team
+    		if( (i+1) % 2 == 0 ) {
     			new Game(date: new Date(), teams:gameTeams).save()
     			gameTeams = []
-
     		}
     	}
 		
@@ -36,6 +35,8 @@ class BootStrap {
 		location.events = [Event.last()]
 		location.save()
     }
+	
     def destroy = {
-    }
+    
+	}
 }
