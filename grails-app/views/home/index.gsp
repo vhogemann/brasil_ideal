@@ -11,7 +11,7 @@
 		<div id="map_canvas" style="width:640px; height:480px;">&nbsp;</div>
 		
 		<div class="toast">
-			<span class="toastTitle">${location.name}</span>
+			<span class="toastTitle">${}</span>
 			<div class="toastMatch">
 				<div id="team1">${}</div>
 				<div id="team2">${}</div>
