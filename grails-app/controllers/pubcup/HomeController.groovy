@@ -7,12 +7,13 @@ import grails.converters.JSON
 class HomeController {
 
     def index() {
-
-		/*def event = Event.first()
+	}
+	
+	def showToaster() {
+		def event = Event.get(params.id)
+		def location = event.location
 		
-		def location = event.location()
-		
-		[location: location, event:event]*/
+		render(template: "toaster", model: [event: event, location: location])
 	}
 
 	def find(String searchKey) {
