@@ -9,7 +9,7 @@ class Location {
 	
 	static mapWith = "mongo"
 	
-	static hasMany = [ events:Game ]
+	static hasMany = [ events:Event ]
 	
 	static mappings = {
 		location geoIndex: true
