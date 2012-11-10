@@ -64,35 +64,15 @@
 		</div>
 		<div class="span12">
 			<h3>Outros jogos <a class="btn btn-small"><i class="icon-plus"></i></a></h3> 
-		
 			<div class="span6 othersGames">
-<%--					<g:each in="${locationInstance.events}" var="event">--%>
-<%--						<g:each in="${event.game.teams}" var="team"></g:each>	--%>
-						<div class="span6">
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="vs">Brasil VS Argentina</div>
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
-						</div>
-						<div class="span6">
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="vs">Brasil VS Argentina</div>
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
-						</div>
-						<div class="span6">
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="vs">Brasil VS Argentina</div>
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
-						</div>
-						<div class="span6">
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="vs">Brasil VS Argentina</div>
-							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
-						</div>
-<%--					</g:each>--%>
+				<g:each in="${locationInstance.events}" var="event">
+					<div class="span6">
+						<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+						<div class="vs">${event.game.teams.get(0)} VS ${event.game.teams.get(1)}</div>
+						<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+						<div class="date"><strong>${event.game.date.format('dd/MM/yyyy HH:MM')}</strong></div>
+					</div>
+				</g:each>
 			</div>			
 		</div>	
 		<%--<a href="#show-location" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
