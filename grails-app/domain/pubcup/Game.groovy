@@ -6,8 +6,10 @@ class Game {
 	
 	List teams
 	
+	static belongsTo = [event:Event]
+	
 	String toString(){
-		//teams.join(" vs ")
+		teams.join(" vs ")
 	}
 		
 	static mapWith = "mongo"
