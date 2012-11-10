@@ -6,6 +6,7 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
+		"/near"(controller: "home", action: "near")
 		"/"(view:"/home/index")
 		"500"(view:'/error')
 
