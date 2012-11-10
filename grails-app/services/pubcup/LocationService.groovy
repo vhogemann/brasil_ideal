@@ -38,6 +38,11 @@ class LocationService {
             def name 		= response.name
             def location 	= response.Placemark.Point.coordinates[0]
 
+            location 		= [location[1],location[0]]
+
+            println "location: ${location}"
+            println "response: ${response}"
+
             return "[{\"location\": $location, \"name\": \"$name\"}]"
     	} else {
     		return locations.collect{ [location: it.location, id: it.id, name: it.name] } as JSON
