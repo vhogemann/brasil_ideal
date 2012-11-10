@@ -53,6 +53,12 @@ function loadToasterCreate(args){
     $("#toasterPlace").html(template.html());
 }
 
+function loadToaster(obj){
+	$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
+        reloadCountDown();
+    });
+}
+
 function createMarker(obj){
 	var hash = getKey(obj);
 	var marker = plotMapControl[hash]; 
@@ -65,9 +71,7 @@ function createMarker(obj){
   		});
       	google.maps.event.addListener(marker,'click', function(){
             if(obj.id){
-                $("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
-                    reloadCountDown();
-                });
+                loadToaster(obj);
             }else{
                 loadToasterCreate(obj);
             }
@@ -146,6 +150,7 @@ jQuery(function($) {
 	        		geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
 	                	var r = $.map(data, function(item){
 	                		return {
+	                			id: item.id,
 	                			label: item.name,
 	                			value: item.name,
 	                			latitude: item.lat,
@@ -169,22 +174,49 @@ jQuery(function($) {
             $("#txtLatitude").val(ui.item.latitude);
             $("#txtLongitude").val(ui.item.longitude);
             var locationData = {
+            	id: ui.item.id,
                 lat: ui.item.latitude,
                 lng: ui.item.longitude,
                 name: ui.item.label
             };
             createMarker(locationData);
             var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
-            //marker.setPosition(location);
             map.setCenter(location);
             map.setZoom(16);
-            loadToasterCreate(locationData);
-            
+            if(locationData.id){
+            	loadToaster(locationData);
+            }else{
+            	loadToasterCreate(locationData);
+            }
         }
     });
 	
 	$('#center').click(function(){
 		center(map);
 	}).trigger('click');
+
+	$('#bt_show_game_list').click(function() {
+		$('#games-list').fadeToggle('slow');
+	});
 	
+	$('#games-list a').click(function(e) {
+
+		var id 		= this.id.replace(/[a-z_]+/,'');
+		var data 	= {};
+
+		if( id != null && id != "" )
+			data = { id : id };
+
+		$.ajax({
+			type: "GET",
+			url : config.contextPath + "/location/findAllByGameId",
+		  	data : data,
+		  	dataType: 'json',
+		  	success: function(data) {
+		  		plotLocations(data);
+		  	}
+		});
+
+		e.preventDefault();
+	});
 });

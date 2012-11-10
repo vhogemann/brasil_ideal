@@ -73,6 +73,15 @@
 					<a href="#" class="bt">Lista de Eventos</a>
 				</span>
 			</div>
-		</div>
+			<a id="bt_show_game_list" style="border:1px solid #000;background-color:#ccc;width:110px;height:25px;text-align:center;display:block;text-decoration:none;cursor:pointer;">Lista de Jogos</a>
+			<ul id="games-list" style="display:none">
+				<h2>Lista de Jogos</h2>
+				<li><a href="#" id="all_games">Todos os Jogos</a></li>
+				<g:each in="${games}" status="i" var="game">
+					<li>
+						<a href="#" id="game_${game.id}"><g:game value="${game}"/></a>
+					</li>
+				</g:each>
+			</ul>
 	</body>
 </html>
