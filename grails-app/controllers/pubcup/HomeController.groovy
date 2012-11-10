@@ -10,11 +10,18 @@ class HomeController {
 
     def index() {
 	}
-	
+
+	def showLocationToaster(){
+		def location = Location.get(params.locationId)
+		def initialGameTime = new Date()
+		initialGameTime.hours -= 2
+		def event = location.events.find{ it.game.date > initialGameTime }
+		render(template: "toaster", model: [event: event, location: location])
+	}	
+
 	def showToaster() {
 		def event = Event.get(params.id)
 		def location = event.location
-		
 		render(template: "toaster", model: [event: event, location: location])
 	}
 
@@ -30,9 +37,9 @@ class HomeController {
     	def box = [ [ lat1 , long1 ] , [ lat2 , long2 ] ]
     	
     	if(gameId)
-    		locations = Location.findByLocationWithinBoxAndEventGameId(box, gameId)
+    		locations = Location.findAllByLocationWithinBoxAndEventGameId(box, gameId)
     	else
-    		locations = Location.findByLocationWithinBox(box)
+    		locations = Location.findAllByLocationWithinBox(box)
 
     	if(!locations)
     		locations = []
@@ -40,4 +47,17 @@ class HomeController {
     	render locations as JSON
 
     }
+	
+	def nextGames() {
+		def initialGameTime = new Date()
+		initialGameTime.hours -= 2
+		
+		def gameCriteria = Game.createCriteria()
+		def games = gameCriteria.list() {
+			gt("date", initialGameTime)
+			order("date","asc")
+		}
+		
+		render(view:"nextGames", model:[games : games])
+	}
 }
