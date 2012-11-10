@@ -47,7 +47,7 @@ function plotLocations(locations){
 function loadToasterCreate(args){
     var template = $("#new-location-template");
     template.find(".address").text(args.name);
-    template.find(".btn-create").attr('href', config.contextPath + "/location/create?lat=" + args.lat + "&lng=" + args.lng + "&address=" + escape(args.name));
+    template.find(".btn-create").attr('href', config.contextPath + "/location/create?lat=" + args.lat + "&lng=" + args.lng + "&address=" + args.name);
     $("#toasterPlace").html(template.html());
 }
 
@@ -136,16 +136,32 @@ jQuery(function($) {
     
 	$("#searchKey").autocomplete({
         source: function (request, response) {
-            geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
-                response($.map(results, function (item) {
-                    return {
-                        label: item.formatted_address,
-                        value: item.formatted_address,
-                        latitude: item.geometry.location.lat(),
-                        longitude: item.geometry.location.lng()
-                    }
-                }));
-            })
+        	ajax({
+        		url: config.contextPath + '/home/find',
+        		traditional: true,
+        		data: {q : request.term},
+        		success : function(data) {
+	        		geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
+	                	var r = $.map(data, function(item){
+	                		return {
+	                			label: item.name,
+	                			value: item.name,
+	                			latitude: item.lat,
+	                			longitude: item.lng
+	                		}
+	                	});
+	                	var googleRs = $.map(results, function (item) {
+	                    	return {
+	                        	label: item.formatted_address,
+	                        	value: item.formatted_address,
+	                        	latitude: item.geometry.location.lat(),
+	                        	longitude: item.geometry.location.lng()
+	                    	}
+	                	});
+	                	response(r.concat(googleRs));
+	            	});
+        		}
+        	});
         },
         select: function (event, ui) {
             $("#txtLatitude").val(ui.item.latitude);

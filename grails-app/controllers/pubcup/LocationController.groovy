@@ -2,6 +2,7 @@ package pubcup
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.*
+import java.net.URLDecoder;
 
 class LocationController {
 
@@ -17,16 +18,27 @@ class LocationController {
     }
 
     def create() {
-        [locationInstance: new Location(params)]
+        params.address = URLDecoder.decode(params.address, "iso-8859-1")
+        [params:params,locationInstance: new Location(params)]
     }
 
     def save() {
-        def locationInstance = new Location(params)
+        def locationInstance = new Location()
+		bindData(locationInstance, params, [exclude: ['location', 'lat', 'lng']])
+		def locs = [Double.parseDouble(params.lat), Double.parseDouble(params.lng)]
+		locationInstance.location = locs
         if (!locationInstance.save(flush: true)) {
             render(view: "create", model: [locationInstance: locationInstance])
             return
         }
-
+		
+		params.list('gameId').each{ gameId ->
+			def game = Game.get(gameId)
+			if(game && locationInstance){
+				new Event(game: game, location: locationInstance).save()
+			}
+		}
+		
         flash.message = message(code: 'default.created.message', args: [message(code: 'location.label', default: 'Location'), locationInstance.id])
         redirect(action: "show", id: locationInstance.id)
     }
