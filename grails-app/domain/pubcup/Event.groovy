@@ -8,4 +8,7 @@ class Event {
 	
 	static mapWith = "mongo"
 	
+	public String toString() {
+		return "${game.teams.join(" vs ")} - ${game.date.format('dd/MM/yyyy')}" 
+	}
 }
