@@ -18,10 +18,12 @@ jQuery(function($) {
 			return location.name;
 		}
 	}).result(function(event, location, formatted) {
-	 	var obj = {};
+		var obj = {};
+	 	obj.id = location.id;
 	 	obj.lat = location.location[0];
 	 	obj.lng = location.location[1];
 	 	obj.name = location.name;
-	 	plotLocations([obj]);
+	 	var marker = createMarker(obj);
+	 	map.panTo(marker.getPosition());
 	});
 });
