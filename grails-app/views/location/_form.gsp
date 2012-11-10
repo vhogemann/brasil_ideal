@@ -9,6 +9,14 @@
 	<g:textField name="description" value="${locationInstance?.description}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: locationInstance, field: 'address', 'error')} ">
+	<label for="address">
+		<g:message code="location.address.label" default="Address" />
+
+	</label>
+	<g:textField name="address" value="${params?.address}" />		
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: locationInstance, field: 'events', 'error')} ">
 	<label for="events">
 		<g:message code="location.events.label" default="Events" />
@@ -25,3 +33,5 @@
 	<g:textField name="name" value="${locationInstance?.name}"/>
 </div>
 
+<input type="hidden" name="lng" value="${params?.lng}"/>
+<input type="hidden" name="lat" value="${params?.lat}"/>

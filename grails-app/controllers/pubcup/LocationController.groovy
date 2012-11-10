@@ -17,7 +17,8 @@ class LocationController {
     }
 
     def create() {
-        [locationInstance: new Location(params)]
+        println params
+        [params:params,locationInstance: new Location(params)]
     }
 
     def save() {
