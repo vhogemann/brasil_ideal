@@ -120,8 +120,14 @@ class LocationController {
 	}
 	
     def eventSave(){
-		def event = new Event(params).save(failOnError: true)
-		[event: event]
+		def event = new Event(params)
+		if (!event.save(flush: true)) {
+			render(view: "associate", model: [location: Location.get(params.location.id)])
+			return
+		}
+
+		flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), event.id])
+		redirect(action: "show", id: event.location.id)
     }
 
 }
