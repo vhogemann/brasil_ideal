@@ -1,10 +1,11 @@
 <%@ page import="pubcup.Location" %>
 <%@ page import="pubcup.Game" %>
+<%@ page import="pubcup.Event" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'location.label', default: 'Location')}" />
+		<g:set var="entityName" value="${message(code: 'event.label', default: 'Event')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -31,12 +32,11 @@
 				<fieldset>
 					<legend>${location?.name?.encodeAsHTML()}</legend>
 					<g:hiddenField name="location.id" value="${location?.id }"/>
-					<div>
-						<g:select name="game.id" from="${Game.list() }" optionKey="id"  />
-					</div>
-					<div>
-						<g:submitButton name="cadastrar" value="${message(code: 'default.button.create.label') }" class="btn" />
-					</div>
+					<ul>
+						<g:each in="${gameList}" var="game" status="i">
+							<li><g:link elementId="loc${i }" action="eventSave" params="['location.id': location?.id, 'game.id': game?.id]"><g:game value="${game}" /></g:link></li>
+						</g:each>
+					</ul>					
 				</fieldset>
 			</g:form>
 		</div>
