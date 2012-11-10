@@ -15,3 +15,4 @@ target-eclipse
 /web-app/WEB-INF/classes
 target-eclipse/
 web-app/images/Thumbs.db
+.DS_Store
