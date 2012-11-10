@@ -99,4 +99,11 @@ class LocationController {
             redirect(action: "show", id: id)
         }
     }
+
+    def circle() {
+        def center = [params.lat, params.long]
+        def radius = params.radius
+        def locations = Location.findByLocationWithinCircle([center, radius])
+        render(text: locations, contenType: "text/json")
+    }
 }
