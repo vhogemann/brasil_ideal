@@ -1,5 +1,6 @@
 var map;
 var animation = false;
+var plotMapControl = {};
 
 function center( map ){
 	if( navigator.geolocation ){
@@ -24,74 +25,63 @@ function initialize() {
   $('#center').click(function(){
 		center(map);
 	});
+	 
 
-  google.maps.event.addListener(map,'bounds_changed', function(){
-  	 var bound = this.getBounds();
-  	 var lat1 = bound.ca.f;
-  	 var long1 = bound.ca.b;
-  	 var lat2 = bound.ea.f;
-  	 var long2 = bound.ea.b;
-  	 
-  	 ajax({
-  	 	url : config.contextPath + "/home/near/",
-  	 	data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
-  	 	traditional : true,
-  	 	success : function(data){
-  	 		console.log(data);
-  	 	}
-  	 });
-  });
+window.setInterval(function() {
+  	 	var bound = map.getBounds();
+		var lat1 = bound.ca.f;
+		var long1 = bound.ca.b;
+		var lat2 = bound.ea.f;
+		var long2 = bound.ea.b;
+		ajax({
+		  	 url : config.contextPath + "/home/near/",
+		  	 data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
+		  	 traditional : true,
+		  	 success : plotLocations
+		 });	
+}, 5000);
 }
 
-function findLocations(locations){
+function plotLocations(locations){
 	var marker;
 	for(i=0 ; i<locations.length ;i++) {
-		marker = new google.maps.Marker({
-    	position: new google.maps.LatLng(locations[i].x,locations[i].y),
-    	map: map,
-    	title: locations[i].name,
-  	});
-		google.maps.event.addListener(marker, 'mouseover', turnMarkerReady);
-		google.maps.event.addListener(marker,'mouseout', activeAnimation);
+	   var hash = getKey(name,lat,lng);
+	   if(!plotMapControl[hash]){
+	   	 var name = locations[i].name ;
+		 var lat = locations[i].lat;
+		 var lng = locations[i].lng;
+	   	 marker = new google.maps.Marker({
+    	 position: new google.maps.LatLng(lat, lng),
+    	 map: map,
+    	 title: name,
+    	 animation : google.maps.Animation.DROP
+  		});
+	   	 plotMapControl[hash]=locations[i];
+	   	 locations.length == 1 ? map.panTo(marker.getPosition()) : {};
+	   }
 	}	
 }
 
+function getKey(name, lat, lng) {
+	var keyAsString = lat + lng + name;
+	var lenght = keyAsString.lenght;
+	var key = 0;
+	
+	var i;
+	for(i=0; i < lenght; i++) {
+		key += keyAsString[i].charCodeAt(0) * 31 ^ (lenght - i);
+	}
+	return key;
+}	
 
-function plotLocation(obj){
-	var marker = new google.maps.Marker({
-    	position: new google.maps.LatLng(obj.location[0],obj.location[1]),
-    	map: map,
-    	title: obj.name,
-  	});
-		google.maps.event.addListener(marker, 'mouseover', turnMarkerReady);
-		google.maps.event.addListener(marker,'mouseout', activeAnimation);
-    google.maps.event.addListener(marker,'click', function(){
-      $("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
-        reloadCountDown();
-      });
-    });
-		map.panTo(marker.getPosition());
+
+function getKey(name,lat,lng){
+	return lat+" "+lng+" "+name;
 }
+
 
 function ajax(options){
 	$.ajax(options);
-}
-
-
-function turnMarkerReady() {
-  if(!animation){
-  	animation=true;
-  } else {
-  	animation=false;
-  }
-}
-
-function activeAnimation() {
-	if (animation) {
-		this.setAnimation(google.maps.Animation.BOUNCE);
-	} else {
-		this.setAnimation(null);
-	}
 }
 
 initialize();
