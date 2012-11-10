@@ -35,7 +35,7 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${locationInstance.id}">${fieldValue(bean: locationInstance, field: "description")}</g:link></td>
-					
+						<td><g:link action="associate" id="${locationInstance.id}">Associar</g:link></td>
 						<td>${fieldValue(bean: locationInstance, field: "name")}</td>
 					
 					</tr>

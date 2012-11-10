@@ -101,7 +101,7 @@ class LocationController {
     }
 	
 	def associate(){
-		def location = pubcup.Location.get(params.location.id)
+		def location = pubcup.Location.get(params.id)
 		return [location: location]
 	}
 	
