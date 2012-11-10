@@ -28,19 +28,16 @@
 			</ul>
 			</g:hasErrors>
 			<g:form action="eventSave" class="well">
-				<g:hiddenField name="location.id" value="${location?.id }"/>
-				<div>
-					Local: ${location?.name?.encodeAsHTML() }
-				</div>
-				<div>
-					<g:datePicker name="date"/>
-				</div>
-				<div>
-					<g:select name="game.id" from="${Game.list() }" optionKey="id"  />
-				</div>
-				<div>
-					<g:submitButton name="cadastrar" value="Cadastrar" />
-				</div>
+				<fieldset>
+					<legend>${location?.name?.encodeAsHTML()}</legend>
+					<g:hiddenField name="location.id" value="${location?.id }"/>
+					<div>
+						<g:select name="game.id" from="${Game.list() }" optionKey="id"  />
+					</div>
+					<div>
+						<g:submitButton name="cadastrar" value="${message(code: 'default.button.create.label') }" class="btn" />
+					</div>
+				</fieldset>
 			</g:form>
 		</div>
 	</body>

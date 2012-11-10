@@ -17,6 +17,9 @@
 		<r:require module="bootstrap"/>
 		<g:layoutHead/>
 		<r:layoutResources />
+		<script type="text/javascript">
+			var config = {contextPath: '${request.contextPath}'};
+		</script>
 	</head>
 	<body>
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
