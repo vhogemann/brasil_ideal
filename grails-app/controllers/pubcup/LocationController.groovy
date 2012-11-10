@@ -31,12 +31,6 @@ class LocationController {
         redirect(action: "show", id: locationInstance.id)
     }
 
-
-    def something(){
-        def l = [[x:-22.909079507, y:-43.1770692, name:"Jose's Bar"], [x:-22.909079507, y:-42.1770692, name: "Jonh's Bar"]]
-        render(contentType:"text/json") {l}
-    }
-
     def show(String id) {
         def locationInstance = Location.findById(id)
         if (!locationInstance) {
