@@ -28,9 +28,9 @@ class HomeController {
     	def box = [ [ lat1 , long1 ] , [ lat2 , long2 ] ]
     	
     	if(gameId)
-    		locations = Location.findByLocationWithinBoxAndEventGameId(box, gameId)
+    		locations = Location.findAllByLocationWithinBoxAndEventGameId(box, gameId)
     	else
-    		locations = Location.findByLocationWithinBox(box)
+    		locations = Location.findAllByLocationWithinBox(box)
 
     	if(!locations)
     		locations = []
