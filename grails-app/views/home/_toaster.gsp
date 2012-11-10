@@ -1,5 +1,9 @@
 <div class="toast">
-    <span class="toastTitle">${location?.name}</span>
+    <span class="toastTitle">
+    	<g:link controller="location" action="show" id="${location.id}">
+    		${location?.name}
+    	</g:link>
+   	</span>
     <g:if test="${event}">
         <div class="countdown">
             <span time="${Math.round( event.game?.date.getTime() / 1000)}" class="kkcount-down"></span>

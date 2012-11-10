@@ -15,6 +15,10 @@
 			<input type="button" id="center" value="Centralizar"/>
 			<div id="map_canvas" style="width:640px; height:480px;">&nbsp;</div>
 			<div id="toasterPlace"></div>
+			<div id="new-location-template" style="display: none">
+				<div class="address"></div>
+				<a href="#sss" class="btn btn-create">Criar</a>
+			</div>
 		</form>
 	</body>
 </html>
