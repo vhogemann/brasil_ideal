@@ -7,6 +7,7 @@ import grails.converters.JSON
 class HomeController {
 
     def index() {
+
 		/*def event = Event.first()
 		
 		def location = event.location()
