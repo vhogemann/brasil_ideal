@@ -21,13 +21,17 @@ class HomeController {
         render locations as JSON
     }
 
-    def near(Float latitude, Float longitude, Float radius, String gameId ){
+    def near(Float lat1, Float long1, Float lat2, Float long2, String gameId ){
         def locations = []
-    	def center = [ longitude, latitude ]
-    	if(gameId)
-    		locations = Location.findByLocationWithinCircle
-    	else
-    		locations = Location.findByLocationWithinCircleAndEventGameId([center, radius],gameId)
+
+    	def box = [ [ lat1 , long1 ] , [ lat2 , long2 ] ]
+    	
+    	if(latitude && longitude){
+	    	if(gameId)
+	    		locations = Location.findByLocationWithinBoxAndEventGameId(box, gameId)
+	    	else
+	    		locations = Location.findByLocationWithinBox(box)
+    	}
 
     	render locations as JSON
 
