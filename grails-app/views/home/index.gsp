@@ -17,7 +17,7 @@
 			<div id="toasterPlace"></div>
 			<div id="new-location-template" style="display: none">
 				<div class="address"></div>
-				<a href="#sss" class="btn btn-create">Criar</a>
+				<a href="#replaceMe" class="btn btn-create"><g:message code="default.button.create.label" default="Create" /></a>
 			</div>
 		</form>
 	</body>
