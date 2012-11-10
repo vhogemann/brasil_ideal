@@ -110,7 +110,12 @@ class LocationController {
 	
 	def associate(){
 		def location = pubcup.Location.get(params.id)
-		return [location: location]
+        def gameList = Game.withCriteria{
+            not{
+                'in'('id', location.events.game.id)
+            }
+        }
+		return [location: location, gameList: gameList]
 	}
 	
     def eventSave(){

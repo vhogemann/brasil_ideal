@@ -13,6 +13,8 @@ class HomeController {
 		def event = Event.get(params.id)
 		def location = event.location
 		
+		println ">>" + event.game
+		
 		render(template: "toaster", model: [event: event, location: location])
 	}
 
@@ -38,4 +40,17 @@ class HomeController {
     	render locations as JSON
 
     }
+	
+	def nextGames() {
+		def initialGameTime = new Date()
+		initialGameTime.hours -= 2
+		
+		def gameCriteria = Game.createCriteria()
+		def games = gameCriteria.list() {
+			gt("date", initialGameTime)
+			order("date","asc")
+		}
+		
+		render(view:"nextGames", model:[games : games])
+	}
 }
