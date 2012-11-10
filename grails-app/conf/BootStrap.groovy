@@ -25,7 +25,8 @@ class BootStrap {
         new Location(name: 'Bar do Adonis', description: 'Os pratos são preparados com os melhores produtos de procedência qualificada  para garantir a qualidade do sabor especial que só aqui você encontra.', address: 'Shopping Nova América', location:[22.873012,-43.270168]).save()
 
 		Game.findAll().each { game ->
-			new Event(game: game, location: location).save()
+			def event = new Event(game: game, location: location).save()
+			location.events.add(event).save()
 		}
     }
     def destroy = {

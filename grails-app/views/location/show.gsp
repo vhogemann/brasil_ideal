@@ -14,6 +14,11 @@
 				border: solid 1px;
 				padding: 10px;
 			}
+			.date{
+				padding: 13px;
+				margin-left : 20px;
+				float:left;
+			}
 			.vs{
 				float:left;
 				margin: 0px 20px 0px 20px;
@@ -35,6 +40,11 @@
 				padding: 0px;
 				border: solid 1px;
 			}
+			#associationGame{
+				margin-top: 5px;
+				float: left;
+				border: 1px solid;
+			}
 		</style>
 	</head>
 	<body class="container">
@@ -53,17 +63,36 @@
 			</div>	
 		</div>
 		<div class="span12">
-			<h3>Outros jogos</h3>
+			<h3>Outros jogos <a class="btn btn-small"><i class="icon-plus"></i></a></h3> 
 		
-			<div class="span11 othersGames">
-				<div class="span10">
-					<g:each in="${locationInstance.events}" var="event">
-						<g:each in="${event.game.teams}" var="team"></g:each>	
-						<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-						<div class="vs">Brasil VS Argentina</div>
-						<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
-					</g:each>
-				</div>
+			<div class="span6 othersGames">
+<%--					<g:each in="${locationInstance.events}" var="event">--%>
+<%--						<g:each in="${event.game.teams}" var="team"></g:each>	--%>
+						<div class="span6">
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="vs">Brasil VS Argentina</div>
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
+						</div>
+						<div class="span6">
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="vs">Brasil VS Argentina</div>
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
+						</div>
+						<div class="span6">
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="vs">Brasil VS Argentina</div>
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
+						</div>
+						<div class="span6">
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="vs">Brasil VS Argentina</div>
+							<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
+							<div class="date"><strong>17/10/1987 - 12:30</strong></div>
+						</div>
+<%--					</g:each>--%>
 			</div>			
 		</div>	
 		<%--<a href="#show-location" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
