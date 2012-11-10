@@ -6,16 +6,16 @@ class Game {
 	List teams
 	
 	String toString(){
-		teams.join(" x ")
+		teams?.join(" x ")
 	}
 		
 	static mapWith = "mongo"
 	
 	def teamAName() {
-		teams.first().name
+		teams?.first().name
 	}
 	
 	def teamBName() {
-		teams.last().name
+		teams?.last().name
 	}
 }
