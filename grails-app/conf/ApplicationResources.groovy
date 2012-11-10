@@ -13,4 +13,13 @@ modules = {
    googlemaps {
   	   resource url: 'js/map.js'
    }
+
+   kkcountdown{
+     dependsOn 'jquery'
+     resource url: 'js/kkcountdown.js'
+   }
+   countdown{
+     dependsOn 'kkcountdown'
+     resource url: 'js/countdown.js'
+   }
 }

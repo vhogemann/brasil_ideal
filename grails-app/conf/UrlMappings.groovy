@@ -6,8 +6,10 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
-
-		"/"(view:"/index")
+		"/"(view:"/home/index")
 		"500"(view:'/error')
+
+		// TODO: somente para testar o js
+		"/countdown"(view: '/countdown')
 	}
 }
