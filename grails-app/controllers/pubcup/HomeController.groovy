@@ -23,16 +23,17 @@ class HomeController {
     }
 
     def near(Float lat1, Float long1, Float lat2, Float long2, String gameId ){
-        def locations = []
+        def locations
 
     	def box = [ [ lat1 , long1 ] , [ lat2 , long2 ] ]
     	
-    	if(latitude && longitude){
-	    	if(gameId)
-	    		locations = Location.findByLocationWithinBoxAndEventGameId(box, gameId)
-	    	else
-	    		locations = Location.findByLocationWithinBox(box)
-    	}
+    	if(gameId)
+    		locations = Location.findByLocationWithinBoxAndEventGameId(box, gameId)
+    	else
+    		locations = Location.findByLocationWithinBox(box)
+
+    	if(!locations)
+    		locations = []
 
     	render locations as JSON
 
