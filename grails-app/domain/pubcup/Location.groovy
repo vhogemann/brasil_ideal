@@ -9,10 +9,10 @@ class Location {
 	String lat
 	String lng
 
-	public void setLocation(List location){
-		this.location = location
-		lat = "${location[0]}"
-		lng = "${location[1]}"
+	public void setLocation(List locs){
+		this.@location = locs
+		lat = "${locs[0]}"
+		lng = "${locs[1]}"
 	}
 
 	static mapWith = "mongo"
@@ -23,4 +23,7 @@ class Location {
 		location geoIndex: true
 	}
 
+	static constraints = {
+		name blank: false
+	}
 }

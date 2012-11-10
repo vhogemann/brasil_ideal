@@ -28,6 +28,6 @@ modules = {
    }
    index {
    		dependsOn 'autocomplete','countdown'
-   		resource url: 'js/index.js?13213123'
+   		resource url: 'js/index.js'
    }
 }
