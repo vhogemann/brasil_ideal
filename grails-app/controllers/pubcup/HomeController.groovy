@@ -16,4 +16,16 @@ class HomeController {
 
         render locations as JSON
     }
+
+    def near(Float latitude, Float longitude, Float radius, String gameId ){
+        def locations = []
+    	def center = [ longitude, latitude ]
+    	if(gameId)
+    		locations = Location.findByLocationWithinCircle
+    	else
+    		locations = Location.findByLocationWithinCircleAndEventGameId([center, radius],gameId)
+
+    	render locations as JSON
+
+    }
 }
