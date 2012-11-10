@@ -14,8 +14,8 @@
             <div id="team2">${event?.game?.teamBName()}</div>
         </div>
         <div class="toastDateGroup">
-            <span id="toastDate">Data : ${event?.game?.formattedDate()}</span>
-            <span id="toastTime">Horário : ${event?.game?.formattedTime()}</span>
+            <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
+            <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>
         </div>
     </g:if>
 </div>

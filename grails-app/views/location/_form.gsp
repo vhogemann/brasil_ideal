@@ -5,7 +5,6 @@
 <div class="fieldcontain ${hasErrors(bean: locationInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="location.description.label" default="Description" />
-		
 	</label>
 	<g:textField name="description" value="${locationInstance?.description}"/>
 </div>
