@@ -183,7 +183,7 @@ class LocationController {
         render filteredEvents.collect{ event ->
             def location = event.location
 
-            [lng: location.lng, lat: location.lat, name: location.name] 
+            [lng: location.lng, lat: location.lat, name: location.name, id: location.id] 
         } as JSON
     }
 
