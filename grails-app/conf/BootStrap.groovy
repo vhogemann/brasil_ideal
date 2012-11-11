@@ -14,7 +14,7 @@ class BootStrap {
     	teams.eachWithIndex { team, i ->
     		gameTeams.add team
     		if( (i+1) % 2 == 0 ) {
-    			new Game(date: (Date.parse('dd/MM/yyyy HH:mm', '12/11/2012 12:54')), teams:gameTeams).save()
+    			new Game(date: (Date.parse('dd/MM/yyyy HH:mm', '12/11/2012 12:54') + 1), teams:gameTeams).save()
     			gameTeams = []
     		}
     	}

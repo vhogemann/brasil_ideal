@@ -16,7 +16,7 @@
 		<script src="js/lang/pt-br.js"></script>
 		<script type="text/javascript">
 			moment.lang('pt-br');
-			function reloadCountDown1(){
+			function reloadCountDown(){
 				var min = 60;
 				var hor = 60 * min;
 				var dia = hor * 24;
@@ -37,7 +37,7 @@
 				}, 1000);
 			}
 
-			function reloadCountDown(){
+			function reloadCountDown2(){
 				var min = 60;
 				var hor = 60 * min;
 				var dia = hor * 24;
