@@ -22,7 +22,7 @@ jQuery(function($) {
 
     resizeElementToFullScreen( $(".helper") );
 
-    $('#welcome-link').click(function() {
+    $('#help').click(function() {
     	$('.helper').fadeIn('slow');
     });
 });
