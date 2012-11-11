@@ -32,11 +32,35 @@
 		 				}else{
 		 					$(this).text(msgs.started + a.fromNow());
 		 				}
-						
 		 			});
 		 		}, 1000);
 		 	}
-		 </script>
+
+			function reloadCountDown2(){
+				var min = 60;
+				var hor = 60 * min;
+				var dia = hor * 24;
+				setInterval(function(){
+					$(".kkcount-down").each(function(){
+						var diffTime = parseInt($(this).attr("time"));
+						var targetDate = new Date((new Date().getTime() + diffTime));
+						var b = moment();
+						var a = moment(targetDate);
+						var seconds = a.diff(b, 'seconds');
+						var dd = Math.floor(seconds / dia);
+						seconds = seconds % dia;
+						var hh = Math.floor(seconds / dia);
+						seconds = seconds % hor;
+						var mm = Math.floor(seconds / dia);
+						seconds = seconds % min;
+						
+						var ss = seconds;
+						$(this).text('Faltam ' + dd + ' dias ' + hh + ' horas ' + mm + ' min ' + ss + ' s.');
+						
+					});
+				}, 1000);
+			}
+		</script>
 	</head>
 	<body>
 		<form action="" method="get" onsubmit="return false;">
