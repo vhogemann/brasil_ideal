@@ -70,7 +70,7 @@
 						<input type="text" id="searchKey" class="searchKey" name="searchKey" />
 					</label>
 					<span class="search">
-						<input class="bt" type="button" value="<g:message code="search.button" default="Search!"/>" />
+						<input class="btn" type="button" value="<g:message code="search.button" default="Search"/>" />
 					</span>
 				</fieldset>
 			</div>
@@ -94,7 +94,7 @@
 				</div>
 				<div class="actions">
 					<span class="my-local">
-						<input class="bt" type="button" id="center" value="<g:message code="center.map" default="Get Location"/>"/>
+						<input class="btn" type="button" id="center" value="<g:message code="center.map" default="Get Location"/>"/>
 					</span>
 					<span class="show-event">
 						<a id="bt_show_game_list" class="bt"><g:message code="next.events" default="Next Games"/></a>
