@@ -78,7 +78,7 @@ function recolorOthersPins() {
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34)
     );
-    for(m in plotMapControl){
+    for(var m in plotMapControl){
         plotMapControl[m].setIcon(pinImage);
     }
 }

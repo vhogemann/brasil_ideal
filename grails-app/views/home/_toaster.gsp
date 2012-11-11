@@ -11,10 +11,12 @@
 				</g:if>
 			</address>
 		</div>
-		<div class="toastDateGroup">
-            <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
-            <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>
-        </div>
+		<g:if test="${event}">
+			<div class="toastDateGroup">
+	            <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
+	            <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>
+	        </div>
+        </g:if>
 	</div>
 	
     <g:if test="${event}">
