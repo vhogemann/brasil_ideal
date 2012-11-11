@@ -65,13 +65,14 @@ function loadToasterCreate(args){
     template.find(".address").text(args.name);
     template.find(".btn-create").attr('href', config.contextPath + "/location/create?lat=" + args.lat + "&lng=" + args.lng + "&address=" + args.name);
     $("#toasterPlace").html(template.html());
+    $(".infobar").addClass('opened');
 }
 
 function loadToaster(obj){
 	$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
         reloadCountDown();
     });
-	$(".infobar").addClass('opened')
+	$(".infobar").addClass('opened');
 }
 
 function recolorOthersPins() {

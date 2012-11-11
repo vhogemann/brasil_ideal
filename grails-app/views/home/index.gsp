@@ -26,13 +26,12 @@
 				<div class="infobar">
 					<div id="toasterPlace"></div>
 					<div class="event-action" id="new-location-template" style="display: none">
-						<span class="add-event">
-							<span class="address"></span>
+						<div class="local-data">
+							<h2 class="tit address"></h2>
 							<a href="#replaceMe" class="bt btn-create">
-								<g:message code="default.button.create.label" default="Create" />
+								<g:message code="location.button.create.label" default="Create new location" />
 							</a>
-						</span>
-						<span class="more-info"><a href="#" class="bt">Mais Informações</a></span>
+						</div>
 					</div>
 					<ul id="games-list" style="display:none">
 						<h2>Lista de Jogos</h2>
