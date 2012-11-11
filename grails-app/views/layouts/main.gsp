@@ -34,21 +34,17 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<form action="" method="get">
-			<input type="hidden" id="txtLatitude" name="txtLatitude" />
-	        <input type="hidden" id="txtLongitude" name="txtLongitude" />
-			<div id="page">
-				<div id="header">
-					<div class="header">
-						<h1 class="logo"><a href="/" class="lnk">PubCup</a></h1>
-					</div>
+		<div id="page">
+			<div id="header">
+				<div class="header">
+					<h1 class="logo"><a href="/" class="lnk">PubCup</a></h1>
 				</div>
-				<div id="content">
-					<g:layoutBody />
-				</div>
-				<div id="footer" role="contentinfo">PubCup - Powered by Grails</div>
 			</div>
-		</form>
+			<div id="content">
+				<g:layoutBody />
+			</div>
+			<div id="footer" role="contentinfo">PubCup - Powered by Grails</div>
+		</div>
 
 		<div id="spinner" class="spinner" style="display:none;">Loading&hellip;</div>
 		

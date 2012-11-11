@@ -8,6 +8,7 @@ class Location {
 	List location
 	String lat
 	String lng
+	String phone
 
 	public void setLocation(List locs){
 		this.@location = locs
@@ -25,5 +26,6 @@ class Location {
 
 	static constraints = {
 		name blank: false
+		phone nullable: true
 	}
 }

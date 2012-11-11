@@ -28,7 +28,7 @@ class BootStrap {
 		//new Location(name: 'Conversa Fiada', description: 'A conversa mais fiada!', address: 'Avenida Ataulfo de Paiva, 900, Leblon', location:[]).save()
 		//new Location(name: 'Bar Bracarense', description: 'Os bacarenses mais animados!', address: 'Rua José Linhares, 85, Leblon', location:[]).save()
 		
-		new Location(name: 'Cosmopolitan', description: 'Restaurante ideal!', address: 'Rua da Assembléia, 13 - Centro', location:[-22.904344d,-43.174875d]).save()
+		new Location(name: 'Cosmopolitan', description: 'Restaurante ideal!', address: 'Rua da Assembléia, 13 - Centro', location:[-22.904344d,-43.174875d]).save(failOnError: true)
 		new Location(name: 'Bar Ao Vivo', description: 'O bar que sabe!', address: 'Rua São José, 8', location:[-22.903633d,-43.174381d]).save()
 		new Location(name: 'Antigamente Bar e Restaurante', description: 'A melhor feijoada das sextas-feiras!', address: 'Rua do Ouvidor, 43 - Centro', location:[-22.901538d,-43.175583d]).save()
 		new Location(name: 'Bar Luiz', description: 'Um dos mais tradicionais bares do Rio.', address: 'Rua da Carioca, 39 - Centro', location:[-22.905906d,-43.18011d]).save()
