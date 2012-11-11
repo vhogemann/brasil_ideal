@@ -71,7 +71,7 @@
 						<input type="text" id="searchKey" class="searchKey" name="searchKey" />
 					</label>
 					<span class="search">
-						<input class="bt" type="button" value="pesquisar" />
+						<input class="bt" type="button" value="<g:message code="search.button" default="Search!"/>" />
 					</span>
 				</fieldset>
 			</div>
@@ -85,7 +85,7 @@
 						<div class="local-data">
 							<h2 class="tit address"></h2>
 							<a href="#replaceMe" class="bt btn-create">
-								<g:message code="location.button.create.label" default="Create new location" />
+								<g:message code="create.location" default="Register Pub" />
 							</a>
 						</div>
 					</div>						
@@ -95,16 +95,15 @@
 				</div>
 				<div class="actions">
 					<span class="my-local">
-						<input class="bt" type="button" id="center" value="Centralizar"/>
+						<input class="bt" type="button" id="center" value="<g:message code="center.map" default="Get Location"/>"/>
 					</span>
 					<span class="show-event">
-						<a id="bt_show_game_list" class="bt">Lista de Eventos</a>
+						<a id="bt_show_game_list" class="bt"><g:message code="next.events" default="Next Games"/></a>
 					</span>
 					<div id="games-list" style="display:none;background-color:#fff;height:60px;overflow:auto;position:absolute;right:10px;width:250px;margin-top:20px">
 						<span id="close-game-list" style="font-weight:bold;position:absolute;top:10px;right:10px;font-size:1.0em;cursor:pointer">[x]</span>
 						<ul style="padding:15px;">
-							<h2 style="margin-bottom:5px">Lista de Jogos</h2>
-							<li><a href="#" id="all_games">Todos os Jogos</a></li>
+							<li><a href="#" id="all_games"><g:message code="all.events" default="All Matches"/></a></li>
 							<g:each in="${games}" status="i" var="game">
 								<li>
 									<a href="#" id="game_${game.id}"><g:game value="${game}"/></a>
