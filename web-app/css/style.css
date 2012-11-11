@@ -43,7 +43,6 @@ h1.logo {float:left;text-indent: -999em;background: url(../img/logo.png) no-repe
 .header .help {float:right;margin:17px 10px;}
 .header .help .btn{background-position:0 -300px;}
 .header .help .btn:hover {border-radius:5px;box-shadow:1px 1px;}
-#map_canvas {width:100%;height:700px;}
 
 #toasterPlace {position:relative;}
 
@@ -115,33 +114,28 @@ h1.logo {float:left;text-indent: -999em;background: url(../img/logo.png) no-repe
 /*other*/
 #close {font-weight:bold;position:absolute;top:10px;right:10px;font-size:1.5em;cursor:pointer;}
 
-.infobar {display: block;}
-.infobar.opened {display:none;}
+/*helper*/
+.helper-page {position:absolute;z-index:999;top:55px;left:0;background-color:#fff;width:100%;display:none;}
+#close-helper {font-weight:bold;position:absolute;top:10px;right:30px;font-size:1.4em;cursor:pointer;}
+.logo-big {margin:0px auto;width:311px;height:267px;text-indent:-999em;display:block;background: url(../img/logo-big.png) no-repeat 0 0;}
+.helper-page hr {color:#ccc;width:80%;margin-bottom:20px;}
+.helper-page p {width:80%;margin:0px auto;font-size:14px;}
 
-/* Large desktop 
-@media (min-width: 1200px) {
- .infobar {position:absolute;height:100%;width:400px;left:0;z-index:10;background:rgba(0,0,0,.9);}
-}
-/* Portrait tablet to landscape and desktop */
+/*gamesList*/
+
+#games-list {border:1px solid #000;border-radius:3px;background:rgba(0,0,0,.8);margin:10px 0;display:none;height:60px;overflow:auto;position:absolute;right:10px;width:250px;margin-top:20px;}
+#close-game-list {font-weight:bold;position:absolute;top:10px;right:10px;font-size:1.0em;cursor:pointer}
+#games-list ul {padding:15px;}
+
+/*responsive*/
 @media (min-width: 769px) { 
 .infobar {position:absolute;height:100%;width:300px;left:0;z-index:10;background:rgba(0,0,0,.9);}
 h1.logo {float:left;text-indent: -999em;background: url(../img/logo.png) no-repeat 0 0;margin:5px 10px;width:210px;height:45px;}
 .search-area {position:absolute;top:10px;right:44px;left:230px;z-index:10;}
-
-
 }
- 
-/* Landscape phone to portrait tablet */
 @media (max-width: 768px) { 
 .infobar {position:absolute;width:100%;height:auto;bottom:0;z-index:10;background:rgba(0,0,0,.9);}
 .infobar .event-list {display:none;}
 h1.logo {display:block;text-indent: -999em;background: url(../img/logo.png) no-repeat 0 0;margin:5px 10px;width:50px;height:45px;}
 .search-area {position:absolute;top:10px;right:44px;left:70px;z-index:10;}
-
 }
- 
-/* Landscape phones and down
-@media (max-width: 480px) { 
-.infobar {position:absolute;width:100%;height:auto;bottom:0;z-index:10;background:rgba(0,0,0,.9);}
-}
- */

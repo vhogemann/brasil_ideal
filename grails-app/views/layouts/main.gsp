@@ -36,7 +36,10 @@
 		<div id="page">
 			<div id="header">
 				<div class="header">
-					<h1 class="logo"><a href="${createLink(uri: '/') }" class="lnk" style="height:100%;display:block">PubCup</a><a href="#" id="welcome-link">[O]</a></h1>
+					<h1 class="logo"><a href="${createLink(uri: '/') }" class="lnk" style="height:100%;display:block">PubCup</a></h1>
+					<div class="help">
+						<a href="#" class="btn">Ajuda?</a>
+					</div>
 				</div>
 			</div>
 			<div id="content">
