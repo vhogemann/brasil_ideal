@@ -48,16 +48,16 @@ h1 {font-weight:bold;font-size:2em;padding:10px;}
 
 .event .flag > span{overflow:hidden;display:inline-block;width:74px;height:0;padding-top:54px;background:url(../img/sprite-flags.png) no-repeat left -999em;}
 
-.event .flag .br {background-position:0 0;}
-.event .flag .us {background-position:0 -500px;}
+.event .flag .bra {background-position:0 0;}
+.event .flag .usa {background-position:0 -500px;}
 .event-data .name {display:block;margin-top:5px;color:#fff;}
 
 .event-data .score .value {font-size:3em;color:#fff;}
 .event-data .score .vs {font size:2em;padding:0 20px}
 
 .event-list .flag > span {overflow:hidden;height:0;display:inline-block;background:url(../img/sprite-flags.png) no-repeat left -999em;width:48px;padding-top:35px;}
-.event-list .flag .br {background-position:0 -800px}
-.event-list .flag .us {background-position:0 -1300px}
+.event-list .flag .bra {background-position:0 -800px}
+.event-list .flag .usa {background-position:0 -1300px}
 
 .event-list li{margin-bottom:10px}
 .event-list li:after {content:'';display:block;clear:both;margin-bottom:5px;}

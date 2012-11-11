@@ -11,11 +11,11 @@ class Game {
 		
 	static mapWith = "mongo"
 	
-	def teamAName() {
+	def teamA() {
 		teams?.first()
 	}
 	
-	def teamBName() {
+	def teamB() {
 		teams?.last()
 	}
 	
