@@ -25,7 +25,7 @@ function updateLocationDescription() {
 	  	 url : config.contextPath + "/location/updateDescription/",
 	  	 data : {locationId: "${locationInstance.id}", description: locationDescription},
 	  	 traditional : true,
-	  	 success : populateResult(result)
+	  	 success : populateResult
 	 });
 }
 

@@ -24,43 +24,39 @@
 				<div class="event">
 					<span class="vs1">
 						<span class="flag">
-							<span class="${event.game?.teamA()?.code?.toLowerCase()}">bandeira do pais</span>
+							<span class="${event.game?.teamA()?.code?.toLowerCase()}"></span>
 							<strong class="name">${event.game?.teamA()?.name?.encodeAsHTML()}</strong>
 						</span>
 					</span>
 					<span class="score">
-						<span class="value">0</span>
 						<span class="vs">x</span>
-						<span class="value">0</span>
 					</span>
 					<span class="vs2">
 						<span class="flag">
-							<span class="${event.game?.teamB()?.code?.toLowerCase()}">bandeira do pais</span>
+							<span class="${event.game?.teamB()?.code?.toLowerCase()}"></span>
 							<strong class="name">${event.game?.teamB()?.name?.encodeAsHTML()}</strong>
 						</span>
 					</span>
 				</div>
 				<div class="countdown">
-            		<span time="${Math.round( event.game?.date.getTime() / 1000)}" class="kkcount-down"></span>
+            		Faltam <span time="${Math.round( event.game?.date.getTime() / 1000)}" class="kkcount-down"></span> para começar o evento.
         		</div>
 				<div class="ev-list">
 					<ul class="event-list">
-						<g:each in="${events }" var="event">
+						<g:each in="${events}" var="event">
 							<li>
 								<span class="vs1">
 									<span class="flag">
-										<span class="${event.game?.teamA()?.code?.toLowerCase()}">bandeira do pais</span>
+										<span class="${event.game?.teamA()?.code?.toLowerCase()}"></span>
 										<strong class="name">${event.game.teamA()?.name?.encodeAsHTML()}</strong>
 									</span>
 								</span>
 								<span class="score">
-									<span class="value">0</span>
 									<span class="vs">x</span>
-									<span class="value">0</span>
 								</span>
 								<span class="vs2">
 									<span class="flag">
-										<span class="${event?.game?.teamB()?.code?.toLowerCase()}">bandeira do pais</span>
+										<span class="${event?.game?.teamB()?.code?.toLowerCase()}"></span>
 										<strong class="name">${event?.game?.teamB()?.name?.encodeAsHTML()}</strong>
 									</span>
 								</span>

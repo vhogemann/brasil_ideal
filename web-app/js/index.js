@@ -71,6 +71,7 @@ function loadToaster(obj){
 	$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
         reloadCountDown();
     });
+	$(".infobar").addClass('opened')
 }
 
 function recolorOthersPins() {
