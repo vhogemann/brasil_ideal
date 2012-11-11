@@ -96,7 +96,6 @@
 		</script>
 	</head>
 	<body class="container">
-	
 	<blockquote>
 			<h1>${locationInstance.name}</h1>
 	</blockquote>		
@@ -123,6 +122,6 @@
 					</div>
 				</g:each>
 			</div>			
-		</div>	
+		</div>
 	</body>
 </html>
