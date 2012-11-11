@@ -24,7 +24,10 @@
 			</div>
 			<div class="content-area">
 				<div class="infobar">
-					<div id="toasterPlace"></div>
+					<div id="toaster">
+						<span id="close">[x]</span>
+						<div id="toasterPlace"></div>
+					</div>
 					<div class="event-action" id="new-location-template" style="display: none">
 						<div class="local-data">
 							<h2 class="tit address"></h2>
