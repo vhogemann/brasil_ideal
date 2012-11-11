@@ -4,6 +4,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
+		<r:require module="bootstrapcss"/>
 		<g:set var="entityName" value="${message(code: 'location.label', default: 'Location')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
