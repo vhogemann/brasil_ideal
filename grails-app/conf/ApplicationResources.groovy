@@ -32,7 +32,9 @@ modules = {
    jqueryui {
    		dependsOn 'jquery'
    		resource url: 'js/jquery.ui/jquery-ui-1.9.1.custom.min.js', disposition: 'head'
+      resource url: 'js/jquery.ui/jquery-ui-timepicker-addon.js'
       resource url: 'js/jquery.ui/jquery-ui-1.9.1.custom.min.css'
+      resource url: 'js/jquery.ui/jquery-ui-timepicker-addon.css'
    }
    
    index {

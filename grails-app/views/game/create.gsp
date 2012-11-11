@@ -1,4 +1,3 @@
-
 <%@ page import="pubcup.Game" %>
 <%@ page import="pubcup.TeamsEnum" %>
 <!DOCTYPE html>
@@ -8,7 +7,6 @@
 		<g:set var="entityName" value="${message(code: 'game.label', default: 'Game')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
-
 	<body>
 		<a href="#create-game" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
@@ -32,7 +30,7 @@
 			<g:form action="save" method="post">
 				<fieldset class="form">
 					<g:render template="form"/>
-					<ul>
+					<ul class="teams-check">
 						<g:each in="${TeamsEnum.values()}" var="team" status="i">
 							<li>
 								<input type="checkbox" name="teams" value="${team?.name}" id="team${i}"/>

@@ -33,7 +33,7 @@
 				<g:hiddenField name="version" value="${gameInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
-					<ul>
+					<ul class="teams-check">
 						<g:each in="${TeamsEnum.values()}" var="team" status="i">
 							<li>
 								<input type="checkbox" name="teams" value="${team?.name}" id="team${i}" <g:if test="${team.name.replaceAll(" ","")==gameInstance.teams.get(0).replaceAll(" ","") || team.name.replaceAll(" ","")==gameInstance.teams.get(1).replaceAll(" ","")}">checked</g:if>  />
