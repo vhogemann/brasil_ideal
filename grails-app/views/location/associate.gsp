@@ -6,20 +6,26 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'event.label', default: 'Event')}" />
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<r:require module="jquery"/>
 	</head>
-	<body>
-		<a href="#create-location" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+	<body class="associate-event">
+		<a href="#create-location" class="skip" tabindex="-1">Skip to content&hellip;</a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><a class="home" href="/pubcup/">Home</a></li>
+				<li><a href="/pubcup/location/list" class="list">Event List</a></li>
 			</ul>
 		</div>
 		<div id="create-location" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+			<h1 class="tit">Create Event</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -32,9 +38,9 @@
 			</g:hasErrors>
 			<g:form action="eventSave" class="well">
 				<fieldset>
-					<legend>${location?.name?.encodeAsHTML()}</legend>
+					<h2 class="stit">${location?.name?.encodeAsHTML()}</h2>
 					<g:hiddenField name="id" value="${location?.id }"/>
-					<ul>
+					<ul class="event-list">
 						<g:each in="${gameList}" var="game" status="i">
 							<li>
 								<input type="checkbox" name="gameId" value="${game?.id}" id="gam${i}"/>
@@ -44,7 +50,7 @@
 							</li>
 						</g:each>
 					</ul>
-					<input class="btn" type="submit" value="${message(code: 'default.button.create.label', default: 'Create')}" />	
+					<span class="create-event"><input class="bt" type="submit" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
 				</fieldset>
 			</g:form>
 		</div>

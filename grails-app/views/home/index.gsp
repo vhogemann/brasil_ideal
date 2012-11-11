@@ -4,7 +4,7 @@
 		<g:set var="loc" value="${org.springframework.web.servlet.support.RequestContextUtils.getLocale(request).toString().replace('_', '-').toLowerCase()}" />
 		<meta name="layout" content="main">
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4IksXZ28CC_-yj4212aQ9WlVeq2RbbPA&sensor=true"></script>
-		<r:require module="index" />
+		<r:require modules="index, bootstrap" />
 		<r:require module="countdown" />
 		<r:require module="kkcountdown" />
 		<script src="js/moment.min.js"></script>
@@ -41,7 +41,6 @@
 							seconds = seconds % min;
 							
 							var ss = seconds;
-
 							var msg = '';
 							if(dd > 0){
 								msg += moment.relativeTime.dd.replace('%d', dd) + ' ';
@@ -100,7 +99,7 @@
 					<span class="show-event">
 						<a id="bt_show_game_list" class="bt"><g:message code="next.events" default="Next Games"/></a>
 					</span>
-					<div id="games-list" style="display:none;background-color:#fff;height:60px;overflow:auto;position:absolute;right:10px;width:250px;margin-top:20px">
+					<div id="games-list" style="display:none;background-color:#fff;height:60px;overflow:auto;position:absolute;right:10px;width:250px;margin-top:20px;opacity: 0.8;-moz-opacity: 0.8;filter:alpha(opacity=8);">
 						<span id="close-game-list" style="font-weight:bold;position:absolute;top:10px;right:10px;font-size:1.0em;cursor:pointer">[x]</span>
 						<ul style="padding:15px;">
 							<li><a href="#" id="all_games"><g:message code="all.events" default="All Matches"/></a></li>
