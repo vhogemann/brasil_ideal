@@ -27,7 +27,7 @@
 		<r:require module="jquery"/>
 
 		<script type="text/javascript">
-			var config = {contextPath: '/pubcup'};
+			var config = {contextPath: "${request.contextPath}"};
 		</script>
 		
 		<g:layoutHead/>
