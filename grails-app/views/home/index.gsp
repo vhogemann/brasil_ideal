@@ -52,10 +52,9 @@
 					<span class="my-local">
 						<input class="bt" type="button" id="center" value="Centralizar"/>
 					</span>
-					<span class="list-event">
-						<a href="#" class="bt">Lista de Eventos</a>
+					<span class="show-event">
+						<a id="bt_show_game_list" class="bt">Lista de Eventos</a>
 					</span>
-					<a id="bt_show_game_list" style="border:1px solid #000;background-color:#ccc;width:110px;height:25px;text-align:center;display:block;text-decoration:none;cursor:pointer;">Lista de Jogos</a>
 				</div>
 			</div>
 		</form>

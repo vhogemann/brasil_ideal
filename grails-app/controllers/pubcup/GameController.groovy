@@ -20,9 +20,9 @@ class GameController {
     }
 
     def save() {
-        if(params.team.size() +! 2) {
-            flash.message = message(code: 'game.teams.persist', args: [message(code: 'game.label', default: 'Game'), id])
-            redirect(action: "create")
+        if(params.teams.size() != 2) {
+            flash.message = message(code: 'game.teams.persist')
+            redirect(action: "create", params: params)
             return
         }
         def gameInstance = new Game(params)
@@ -58,8 +58,8 @@ class GameController {
     }
 
     def update(Long id, Long version) {
-        if(params.team.size() != 2) {
-            flash.message = message(code: 'game.teams.persist', args: [message(code: 'game.label', default: 'Game'), id])
+        if(params.teams.size() != 2) {
+            flash.message = message(code: 'game.teams.persist')
             redirect(action: "edit")
             return
         }

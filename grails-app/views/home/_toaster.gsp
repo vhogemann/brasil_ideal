@@ -20,13 +20,13 @@
 			<div class="ev-data">
 				<ul class="list1">
 					<li class="li1">
-						<span class="flag us">
-							<span class="name">${event?.game?.teamAName()}</span>
+						<span class="flag ${event?.game?.teamA()?.code?.toLowerCase()}">
+							<span class="name">${event?.game?.teamA()?.name}</span>
 						</span>
 					</li>
 					<li class="li2">
-						<span class="flag us">
-							<span class="us name">${event?.game?.teamBName()}</span>
+						<span class="flag ${event?.game?.teamB()?.code?.toLowerCase()}">
+							<span class="us name">${event?.game?.teamB()?.name}</span>
 						</span>
 					</li>
 				</ul>
