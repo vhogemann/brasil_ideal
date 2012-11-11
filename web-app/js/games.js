@@ -15,12 +15,13 @@ jQuery(function($) {
     		$('#date_minute').val(splitedHour[1]);
     	}
 	});
-    /*if( $('.teams-check :checkbox').length > 0 ) {
-    	$('.teams-check :checkbox').click(function() {
+    if( $('.teams-check :checkbox').length > 0 ) {
+    	$('form').submit(function() {
     		if( $('.teams-check :checkbox:checked').length != 2 ) {
     			alert('Um jogo deve obrigatoriamente ter dois times.');
     			$(this).attr('checked', false);
+    			return false;
     		}
     	});
-    }*/
+    }
   });

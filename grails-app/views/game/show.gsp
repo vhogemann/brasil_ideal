@@ -39,7 +39,7 @@
 					class="property-label"><g:message code="game.date.label"
 							default="Date" /></span> <span class="property-value"
 					aria-labelledby="date-label"><g:formatDate
-							date="${gameInstance?.date}" /></span></li>
+							date="${gameInstance?.date}" format="dd/MM/yyyy hh:mm" /></span></li>
 			</g:if>
 			<li class="fieldcontain">
 				<div class="vs">
