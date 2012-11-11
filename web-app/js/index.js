@@ -14,25 +14,15 @@ function initialize() {
         scaleControl: false,
         streetViewControl: false,
         overviewMapControl: false,
-        mapTypeControl: false
-        , panControl: false
-        , zoomControl: false
-        , zoomControlOptions: {
-        	position: google.maps.ControlPosition.BOTTOM_RIGHT,
-        	style: google.maps.ZoomControlStyle.SMALL
-        }
+        mapTypeControl: false,
+        panControl: false,
+        zoomControl: false
     };
  
     map = new google.maps.Map(document.getElementById("map_canvas"), options);
  
     geocoder = new google.maps.Geocoder();
  
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-    });
- 
-    marker.setPosition(latlng);
     google.maps.event.addListener(map,'center_changed', function(){
         holdNearSearch = false;
     });
@@ -65,12 +55,14 @@ function loadToasterCreate(args){
     template.find(".address").text(args.name);
     template.find(".btn-create").attr('href', config.contextPath + "/location/create?lat=" + args.lat + "&lng=" + args.lng + "&address=" + args.name);
     $("#toasterPlace").html(template.html());
+    $(".infobar").show();
 }
 
 function loadToaster(obj){
 	$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
         reloadCountDown();
     });
+    $(".infobar").show();
 }
 
 function recolorOthersPins() {
@@ -80,7 +72,7 @@ function recolorOthersPins() {
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34)
     );
-    for(m in plotMapControl){
+    for(var m in plotMapControl){
         plotMapControl[m].setIcon(pinImage);
     }
 }
@@ -134,7 +126,9 @@ function center( map ){
 	}
 }
 
-$(document).ready( function() {
+jQuery( function($) {
+	$("body").addClass("home");
+	
 	initialize();
 	
 	function loadOnMap(address) {
@@ -147,6 +141,10 @@ $(document).ready( function() {
                     $('#searchKey').val(results[0].formatted_address);
                     $('#txtLatitude').val(latitude);
                     $('#txtLongitude').val(longitude);
+
+                    if(!marker) {
+                        marker = createMarker([{'lat':latitude, 'lgn':longitude}]);
+                    }
  
                     var location = new google.maps.LatLng(latitude, longitude);
                     marker.setPosition(location);
@@ -162,18 +160,6 @@ $(document).ready( function() {
         	loadOnMap($(this).val());
     });
 	
-	google.maps.event.addListener(marker, 'drag', function () {
-        geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                	$('#searchKey').val(results[0].formatted_address);
-                	$('#txtLatitude').val(marker.getPosition().lat());
-                	$('#txtLongitude').val(marker.getPosition().lng());
-                }
-            }
-        });
-    });
-    
 	$("#searchKey").autocomplete({
         source: function (request, response) {
         	ajax({
@@ -224,6 +210,10 @@ $(document).ready( function() {
             }
         }
     });
+
+    $(".infobar").on('click', '#close' , function() {
+        $(".infobar").hide();
+    });
 	
 	$('#center').click(function(){
 		center(map);
@@ -237,16 +227,21 @@ $(document).ready( function() {
     }
 
 	$('#bt_show_game_list').click(function(e) {
-        $('#games-list').fadeToggle('slow');
+        $('#games-list').fadeIn('slow');
     });
+
+    $('#close-game-list').click(function(e) {
+        $('#games-list').fadeOut('slow'); 
+    })
 
     $('#games-list a').click(function(e) {
         clearMarkers(); holdNearSearch=true;
         var id      = this.id.replace(/[a-z_]+/,'');
         var data    = {};
 
-        if( id != null && id != "" )
-            data = { id : id };
+        if( id != null && id != "" ) {
+        	data = { id : id };
+        }
 
         $.ajax({
             type: "GET",
@@ -273,5 +268,4 @@ $(document).ready( function() {
     	resizeMap();
     }
     resizeMap();
-    
 });

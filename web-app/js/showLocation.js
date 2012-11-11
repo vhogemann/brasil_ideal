@@ -12,10 +12,26 @@ function turnEditable(obj) {
 	$(submitButton).attr( 'id','updateButton' );
 	$(submitButton).html( 'Atualizar descrição' );
 
+	var cancelButton = jQuery('<a />');
+	$(cancelButton).attr( 'href', 'javascript:revertUpdate()');
+	$(cancelButton).attr( 'name', 'revertUpdate');
+	$(cancelButton).attr( 'id', 'revertUpdate');
+	$(cancelButton).html( 'Cancelar atualização' );
+	
+	$(cancelButton).insertAfter( $(obj) );
 	$(submitButton).insertAfter( $(obj) );
 	$(textArea).insertAfter( $(obj) );
-	$(obj).remove();
+	$(obj).hide();
 	$("#editMessage").hide();
+}
+
+function revertUpdate() {
+	$("#locationDescription").remove();
+	$("#revertUpdate").remove();
+	$("#updateButton").remove();
+	
+	$("#originalDescription").show();
+	$("#editMessage").show();
 }
 
 function updateLocationDescription() {
@@ -23,9 +39,9 @@ function updateLocationDescription() {
 
 	$.ajax({
 	  	 url : config.contextPath + "/location/updateDescription/",
-	  	 data : {locationId: "${locationInstance.id}", description: locationDescription},
+	  	 data : {locationId: $("#locationId").val(), description: locationDescription},
 	  	 traditional : true,
-	  	 success : populateResult(result)
+	  	 success : populateResult
 	 });
 }
 
@@ -34,13 +50,17 @@ function populateResult(result) {
 		var textArea = $("#locationDescription");
 		var newDescription = $(textArea).val();
 	
-		var p = jQuery("<p/>");
+		var p = $("#originalDescription");
 		$(p).html( newDescription );
-		$(p).attr('onclick','turnEditable(this)');
-		$(p).insertBefore( $(textArea) );
-	
+		$(p).show();
+		$("#editMessage").show();
+		
 		$(textArea).remove();
+		$('#revertUpdate').remove();
 		$('#updateButton').remove();
-		$('#editMessage').show();
 	}
 }
+
+$(document).ready(function() {
+	$("body").addClass("show-location");
+});

@@ -50,22 +50,23 @@
 		<r:require module="showLocation" />
 	</head>
 	<body class="container">
-	<blockquote>
+		<blockquote>
 			<h1>${locationInstance.name}</h1>
-	</blockquote>		
+		</blockquote>		
 		<div class="row-fluid">
 			<div class="span7">
-					<blockquote>
-						<p onclick="turnEditable(this)">${locationInstance.description}</p>
-						<span id="editMessage"><g:message code="location.description.edit" /></span>
-					</blockquote>	
+				<blockquote>
+					<p onclick="turnEditable(this)" id="originalDescription">${locationInstance.description}</p>
+					<span id="editMessage"><g:message code="location.description.edit" /></span>
+				</blockquote>	
 			</div>
 			<div class="span4">
+				<g:hiddenField name="locationId" value="${locationInstance.id}" id="locationId"/>
 				<img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="img-polaroid largeImage"/>
 			</div>	
 		</div>
 		<div class="span12">
-			<h3>Outros jogos <a href="${createLink(controller: 'location', action: 'associate', id: locationInstance?.id)}" class="btn btn-small"><i class="icon-plus"></i></a></h3> 
+			<h3>Outros jogos <g:link controller="location" action="associate" id="${locationInstance?.id }" class="btn btn-small" ><i class="icon-plus">+</i></g:link></h3> 
 			<div class="span6 othersGames">
 				<g:each in="${locationInstance.events}" var="event">
 					<div class="span6">

@@ -7,6 +7,8 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'event.label', default: 'Event')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		
+		<r:require module="jquery"/>
 	</head>
 	<body>
 		<a href="#create-location" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -46,5 +48,10 @@
 				</fieldset>
 			</g:form>
 		</div>
+		<script type="text/javascript">
+			$(document).ready( function() {
+				$("body").addClass("associate-event");
+			});
+		</script>
 	</body>
 </html>
