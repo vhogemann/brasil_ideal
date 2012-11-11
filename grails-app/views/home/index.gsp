@@ -1,63 +1,60 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<g:set var="loc" value="${org.springframework.web.servlet.support.RequestContextUtils.getLocale(request).toString().replace('_', '-').toLowerCase()}" />
 		<meta name="layout" content="main">
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4IksXZ28CC_-yj4212aQ9WlVeq2RbbPA&sensor=true"></script>
 		<r:require module="index" />
 		<r:require module="countdown" />
 		<r:require module="kkcountdown" />
-		<script type="text/javascript">
-			var msgs = {
-				start: 'O evento começa em ',
-				started: 'O evento começou a '
-			};
-		</script>
 		<script src="js/moment.min.js"></script>
-		<script src="js/lang/pt-br.js"></script>
+		<g:if test="${loc != 'en-us' }">
+			<script src="js/lang/${loc }.js"></script>
+			<script type="text/javascript">
+				var locale = "${loc}";
+				moment.lang(locale);
+			</script>
+		</g:if>
+		
 		<script type="text/javascript">
-			moment.lang('pt-br');
 			function reloadCountDown(){
 				var min = 60;
 				var hor = 60 * min;
 				var dia = hor * 24;
+				var diffTime;
+				var targetDate;
+				$(".kkcount-down").each(function(){
+					diffTime = parseInt($(this).attr("time"));
+					targetDate = new Date((new Date().getTime() + diffTime));
+				});
 				setInterval(function(){
 					$(".kkcount-down").each(function(){
-						var diffTime = parseInt($(this).attr("time"));
-						var targetDate = new Date((new Date().getTime() + diffTime));
 						var b = moment();
 						var a = moment(targetDate);
 						var seconds = a.diff(b, 'seconds');
 						if(seconds > 0){
-							$(this).text(msgs.start + a.fromNow());
-						}else{
-							$(this).text(msgs.started + a.fromNow());
-						}
-						
-					});
-				}, 1000);
-			}
+							var dd = Math.floor(seconds / dia);
+							seconds = seconds % dia;
+							var hh = Math.floor(seconds / hor);
+							seconds = seconds % hor;
+							var mm = Math.floor(seconds / min);
+							seconds = seconds % min;
+							
+							var ss = seconds;
 
-			function reloadCountDown2(){
-				var min = 60;
-				var hor = 60 * min;
-				var dia = hor * 24;
-				setInterval(function(){
-					$(".kkcount-down").each(function(){
-						var diffTime = parseInt($(this).attr("time"));
-						var targetDate = new Date((new Date().getTime() + diffTime));
-						var b = moment();
-						var a = moment(targetDate);
-						var seconds = a.diff(b, 'seconds');
-						var dd = Math.floor(seconds / dia);
-						seconds = seconds % dia;
-						var hh = Math.floor(seconds / dia);
-						seconds = seconds % hor;
-						var mm = Math.floor(seconds / dia);
-						seconds = seconds % min;
-						
-						var ss = seconds;
-						$(this).text('Faltam ' + dd + ' dias ' + hh + ' horas ' + mm + ' min ' + ss + ' s.');
-						
+							var msg = '';
+							if(dd > 0){
+								msg += moment.relativeTime.dd.replace('%d', dd) + ' ';
+							}
+							if(hh > 0){
+								msg += moment.relativeTime.hh.replace('%d', hh) + ' ';
+							}
+							if(mm > 0){
+								msg += moment.relativeTime.mm.replace('%d', mm) + ' ';
+							}
+							msg += ss + ' ' + moment.relativeTime.s;
+							$(this).text(msg);
+						}
 					});
 				}, 1000);
 			}
