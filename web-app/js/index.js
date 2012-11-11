@@ -227,8 +227,12 @@ jQuery( function($) {
     }
 
 	$('#bt_show_game_list').click(function(e) {
-        $('#games-list').fadeToggle('slow');
+        $('#games-list').fadeIn('slow');
     });
+
+    $('#close-game-list').click(function(e) {
+        $('#games-list').fadeOut('slow'); 
+    })
 
     $('#games-list a').click(function(e) {
         clearMarkers(); holdNearSearch=true;
