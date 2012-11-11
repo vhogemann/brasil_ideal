@@ -16,7 +16,8 @@
             <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
             <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>
         </div>
-       </g:if>
+        ${event?.game?.date}
+	</g:if>
 </div>
 
    <g:if test="${event}">
@@ -41,7 +42,7 @@
 				</span>
 			</div>
 			<div class="countdown">
-           		Faltam <span time="${Math.round( event.game?.date.getTime() / 1000)}" class="kkcount-down"></span> para começar o evento.
+           		<span time="${event.game?.date.getTime() - new Date().getTime()}" class="kkcount-down"></span>.
        		</div>
 			<div class="ev-list">
 				<ul class="event-list">
