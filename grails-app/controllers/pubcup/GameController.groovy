@@ -90,7 +90,14 @@ class GameController {
         flash.message = message(code: 'default.updated.message', args: [message(code: 'game.label', default: 'Game'), gameInstance.id])
         redirect(action: "show", id: gameInstance.id)
     }
-
+	def auth(){
+		
+	}
+	
+	def validateAuth(){
+		
+	}
+		
     def delete(Long id) {
         def gameInstance = Game.get(id)
         if (!gameInstance) {
