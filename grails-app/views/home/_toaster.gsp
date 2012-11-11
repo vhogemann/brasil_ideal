@@ -18,23 +18,57 @@
     <g:if test="${event}">
     	<div class="event-data">
 			<div class="ev-data">
-				<ul class="list1">
-					<li class="li1">
-						<span class="flag ${event?.game?.teamA()?.code?.toLowerCase()}">
-							<span class="name">${event?.game?.teamA()?.name}</span>
+			
+				<div class="event">
+					<span class="vs1">
+						<span class="flag">
+							<span class="${event?.game?.teamA()}">bandeira do pais</span>
+							<strong class="name">${event?.game?.teamA()}</strong>
 						</span>
-					</li>
-					<li class="li2">
-						<span class="flag ${event?.game?.teamB()?.code?.toLowerCase()}">
-							<span class="us name">${event?.game?.teamB()?.name}</span>
+					</span>
+					<span class="score">
+						<span class="value">0</span>
+						<span class="vs">x</span>
+						<span class="value">0</span>
+					</span>
+					<span class="vs2">
+						<span class="flag">
+							<span class="${event?.game?.teamB()}">bandeira do pais</span>
+							<strong class="name">${event?.game?.teamB()}</strong>
 						</span>
-					</li>
-				</ul>
+					</span>
+				</div>
+				<div class="countdown">
+            		<span time="${Math.round( event.game?.date.getTime() / 1000)}" class="kkcount-down"></span>
+        		</div>
+				<div class="ev-list">
+					<ul class="event-list">
+						<g:each in="${events }" var="event">
+							<li>
+								<span class="vs1">
+									<span class="flag">
+										<span class="${event?.game?.teamA()}">bandeira do pais</span>
+										<strong class="name">${event?.game?.teamA()}</strong>
+									</span>
+								</span>
+								<span class="score">
+									<span class="value">0</span>
+									<span class="vs">x</span>
+									<span class="value">0</span>
+								</span>
+								<span class="vs2">
+									<span class="flag">
+										<span class="${event?.game?.teamB()}">bandeira do pais</span>
+										<strong class="name">${event?.game?.teamB()}</strong>
+									</span>
+								</span>
+							</li>
+						</g:each>
+					</ul>
+				</div>
 			</div>
 		</div>
-        <div class="countdown">
-            <span time="${Math.round( event.game?.date.getTime() / 1000)}" class="kkcount-down"></span>
-        </div>
+        
         <div class="toastDateGroup">
             <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
             <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>

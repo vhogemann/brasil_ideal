@@ -17,8 +17,12 @@ class HomeController {
 		def location = Location.get(params.locationId)
 		def initialGameTime = new Date()
 		initialGameTime.hours -= 2
-		def event = location.events.find{ it.game.date > initialGameTime }
-		render(template: "toaster", model: [event: event, location: location])
+		def events = location.events.findAll{ it.game.date > initialGameTime }.sort{it.game.date}
+		def event
+		if(events){
+			event = events.remove(0)
+		}
+		render(template: "toaster", model: [event: event, events: events, location: location])
 	}	
 
 	def showToaster() {
