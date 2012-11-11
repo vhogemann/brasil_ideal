@@ -39,7 +39,7 @@ modules = {
    
    index {
    		dependsOn 'jqueryui','countdown'
-   		resource url: 'js/index.js'
+   		resource url: 'js/index.js?token=1234'
    }
    
    games {

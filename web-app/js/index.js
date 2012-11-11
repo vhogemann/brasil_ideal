@@ -55,14 +55,14 @@ function loadToasterCreate(args){
     template.find(".address").text(args.name);
     template.find(".btn-create").attr('href', config.contextPath + "/location/create?lat=" + args.lat + "&lng=" + args.lng + "&address=" + args.name);
     $("#toasterPlace").html(template.html());
-    $(".infobar").addClass('opened');
+    $(".infobar").show();
 }
 
 function loadToaster(obj){
 	$("#toasterPlace").load(config.contextPath + '/home/showLocationToaster', {locationId: obj.id}, function(){
         reloadCountDown();
     });
-	$(".infobar").addClass('opened');
+    $(".infobar").show();
 }
 
 function recolorOthersPins() {
@@ -126,7 +126,7 @@ function center( map ){
 	}
 }
 
-$(document).ready( function() {
+jQuery( function($) {
 	$("body").addClass("home");
 	
 	initialize();
@@ -141,6 +141,10 @@ $(document).ready( function() {
                     $('#searchKey').val(results[0].formatted_address);
                     $('#txtLatitude').val(latitude);
                     $('#txtLongitude').val(longitude);
+
+                    if(!marker) {
+                        marker = createMarker([{'lat':latitude, 'lgn':longitude}]);
+                    }
  
                     var location = new google.maps.LatLng(latitude, longitude);
                     marker.setPosition(location);
@@ -206,6 +210,10 @@ $(document).ready( function() {
             }
         }
     });
+
+    $(".infobar").on('click', '#close' , function() {
+        $(".infobar").hide();
+    });
 	
 	$('#center').click(function(){
 		center(map);
@@ -219,7 +227,6 @@ $(document).ready( function() {
     }
 
 	$('#bt_show_game_list').click(function(e) {
-		$(".infobar").show();
         $('#games-list').fadeToggle('slow');
     });
 
@@ -257,8 +264,4 @@ $(document).ready( function() {
     	resizeMap();
     }
     resizeMap();
-   
-	$("#close").click( function(){
-    	$(".infobar").fadeOut();
-	});
 });
