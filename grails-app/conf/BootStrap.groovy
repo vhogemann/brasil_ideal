@@ -50,6 +50,18 @@ class BootStrap {
         new Location(name: 'Owln Thistle Irish Pub', description: 'Another fantastic happy hour in the area', address: '808 Post Ave - Seattle, WA 98104', location:[47.603241d,-122.335649d]).save()
 		new Location(name: 'Fado Irish Pub & Restaurant', description: 'Anyhow, the happy hour was excellent', address: '801 1st AveSeattle, WA 98104', location:[47.6032444d,-122.335649d]).save()
 		new Location(name: 'Uber Tavern', description: 'Awesome selection of booze! Was surprised they carried my favorite high-caffeine drink from college', address: '7517 Aurora Ave Seattle, WA 98103', location:[47.603241d,-122.335649d]).save()
+		new Location(name: 'Barroom Pittsburgh', description: 'Barroom Pittsburgh', address: '7 East Carson Street, Pittsburgh, PA', location:[47.603538d,-122.335989d]).save()
+		new Location(name: 'The Office Pub', description: 'The Office Pub', address: '117 John St, Toronto, ON M5V 2E2, Canada', location:[43.6521d,-79.390211d]).save()
+		new Location(name: 'Pub Z', description: 'The Office Pub', address: '58 Rue Bonneterie, 84000 Avignon, França', location:[43.946822d,4.8105d]).save()
+		new Location(name: 'Oslo Mikrobryggeri AS', description: 'Metal Pub', address: 'Bogstadveien 6, 0355 Oslo, Noruega', location:[59.92698d,10.738192d]).save()
+		new Location(name: 'Gallaghers	 Pub & Eatery Ltd', description: 'Canadian Pub', address: '5010 4 St NE, Calgary, AB T2K 5X8', location:[51.097809d,-114.053214d]).save()
+		new Location(name: 'Sage Club', description: 'Sage Club Pub', address: 'Brückenstraße 1, 10179 Berlin, Alemanha', location:[43.946821d,4.8105d]).save()
+		new Location(name: 'Rafikis', description: 'Rafikis Pub', address: '13 Kloof Nek Road, Cape Town 8001, África do Sul', location:[50.063145d,19.93525d]).save()
+		new Location(name: 'Hedonic Club & Lounge', description: 'Pub Club', address: 'Szewska 9, Kraków, Polônia', location:[50.063145d,19.93525d]).save()
+		new Location(name: 'Shamrock Irish Pub', description: 'Pub Irlandes', address: 'Rua Vieira de Castro, 32 - Parque Farroupilha, Porto Alegre - RS', location:[-30.015747d,-51.212597d]).save()
+
+
+
 
 		Game.list(max: 2).each { game ->
 			def loc = Location.findByName('Esch Café')
