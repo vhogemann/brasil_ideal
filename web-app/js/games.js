@@ -1,4 +1,3 @@
 jQuery(function($) {
-    $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ])
-    $( ".datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy'});
     	});
