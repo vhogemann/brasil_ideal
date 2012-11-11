@@ -1,4 +1,5 @@
 user-agent:*
 
+
 Disallow:/brasil_ideal/grails-app/views/game
-Disallow:/pubcup.com/console
+Disallow:pubcup.com/console
