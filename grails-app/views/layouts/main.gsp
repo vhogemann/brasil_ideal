@@ -39,14 +39,13 @@
 				<div class="header">
 					<h1 class="logo"><a href="/" class="lnk">PubCup</a></h1>
 				</div>
-
-				<div id="content">
-					<g:layoutBody />
-				</div>
-				<div id="footer" role="contentinfo">
-					<div id="fb-root"></div>
-					<div class="fb-like" data-href="http://pubcup.com" data-send="true" data-width="450" data-show-faces="true"></div>
-				</div>
+			</div>
+			<div id="content">
+				<g:layoutBody />
+			</div>
+			<div id="footer" role="contentinfo">
+				<div id="fb-root"></div>
+				<div class="fb-like" data-href="http://pubcup.com" data-send="true" data-width="450" data-show-faces="true"></div>
 			</div>
 		</div>
 
