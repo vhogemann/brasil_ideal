@@ -22,12 +22,17 @@ modules = {
      dependsOn 'kkcountdown'
      resource url: 'js/countdown.js'
    }
-   autocomplete {
+   jqueryui {
    		dependsOn 'jquery'
-   		resource url: 'js/jquery-ui-1.9.1.custom.min.js'
+   		resource url: 'js/jquery.ui/jquery-ui-1.9.1.custom.min.js', disposition: 'head'
+      resource url: 'js/jquery.ui/jquery-ui-1.9.1.custom.min.css'
    }
    index {
-   		dependsOn 'autocomplete','countdown'
+   		dependsOn 'jqueryui','countdown'
    		resource url: 'js/index.js?13213123'
+   }
+   games {
+    dependsOn 'jqueryui'
+    resource url: '/js/games.js'
    }
 }
