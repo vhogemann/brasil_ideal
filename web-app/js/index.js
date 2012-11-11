@@ -16,7 +16,7 @@ function initialize() {
         overviewMapControl: false,
         mapTypeControl: false
         , panControl: false
-        //, zoomControl: false
+        , zoomControl: false
         , zoomControlOptions: {
         	position: google.maps.ControlPosition.BOTTOM_RIGHT,
         	style: google.maps.ZoomControlStyle.SMALL
@@ -242,6 +242,7 @@ $(document).ready( function() {
     });
     
     function resizeMap() {
+    	console.log("ResizeMap called");
     	var header = $("#header").height();
     	var footer = $("#footer").height();
     	var total = $(window).height() - (header + footer);  
@@ -249,7 +250,9 @@ $(document).ready( function() {
     }
     
     $(window).resize(resizeMap());
-    
+    window.onresize = function(event) {
+    	resizeMap();
+    }
     resizeMap();
     	
 });
