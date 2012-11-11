@@ -44,3 +44,7 @@ function populateResult(result) {
 		$('#editMessage').show();
 	}
 }
+
+$(document).ready(function() {
+	$("body").addClass("show-location");
+});
