@@ -103,7 +103,7 @@
 					<span class="show-event">
 						<a id="bt_show_game_list" class="bt"><g:message code="next.events" default="Next Games"/></a>
 					</span>
-					<div id="games-list" style="display:none;background-color:#fff;height:60px;overflow:auto;position:absolute;right:10px;width:250px;margin-top:20px">
+					<div id="games-list" style="display:none;background-color:#fff;height:60px;overflow:auto;position:absolute;right:10px;width:250px;margin-top:20px;opacity: 0.8;-moz-opacity: 0.8;filter:alpha(opacity=8);">
 						<span id="close-game-list" style="font-weight:bold;position:absolute;top:10px;right:10px;font-size:1.0em;cursor:pointer">[x]</span>
 						<ul style="padding:15px;">
 							<li><a href="#" id="all_games"><g:message code="all.events" default="All Matches"/></a></li>
