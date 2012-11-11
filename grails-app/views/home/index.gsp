@@ -88,7 +88,7 @@
 						<div class="local-data">
 							<h2 class="tit address"></h2>
 							<a href="#replaceMe" class="bt btn-create">
-								<g:message code="location.button.create.label" default="Create new location" />
+								<g:message code="create.location" default="Register Pub" />
 							</a>
 						</div>
 					</div>						
