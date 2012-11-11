@@ -242,7 +242,6 @@ $(document).ready( function() {
     });
     
     function resizeMap() {
-    	console.log("ResizeMap called");
     	var header = $("#header").height();
     	var footer = $("#footer").height();
     	var total = $(window).height() - (header + footer);  
@@ -254,5 +253,5 @@ $(document).ready( function() {
     	resizeMap();
     }
     resizeMap();
-    	
+    
 });
