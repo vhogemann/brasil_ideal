@@ -47,9 +47,9 @@ class BootStrap {
 
 
         //Massa de Dados Internacional
-        new Location(name: 'Owln Thistle Irish Pub', description: 'Another fantastic happy hour in the area', address: '808 Post Ave - Seattle, WA 98104', location:[-47.603241d,-122.335649d]).save()
-		new Location(name: 'Fado Irish Pub & Restaurant', description: 'Anyhow, the happy hour was excellent', address: '801 1st AveSeattle, WA 98104', location:[-47.603241d,-122.335649d]).save()
-		new Location(name: 'Uber Tavern', description: 'Awesome selection of booze! Was surprised they carried my favorite high-caffeine drink from college', address: '7517 Aurora Ave Seattle, WA 98103', location:[-47.603241d,-122.335649d]).save()
+        new Location(name: 'Owln Thistle Irish Pub', description: 'Another fantastic happy hour in the area', address: '808 Post Ave - Seattle, WA 98104', location:[47.603241d,-122.335649d]).save()
+		new Location(name: 'Fado Irish Pub & Restaurant', description: 'Anyhow, the happy hour was excellent', address: '801 1st AveSeattle, WA 98104', location:[47.6032444d,-122.335649d]).save()
+		new Location(name: 'Uber Tavern', description: 'Awesome selection of booze! Was surprised they carried my favorite high-caffeine drink from college', address: '7517 Aurora Ave Seattle, WA 98103', location:[47.603241d,-122.335649d]).save()
 
 		Game.list(max: 2).each { game ->
 			def loc = Location.findByName('Esch Café')
