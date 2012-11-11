@@ -61,7 +61,7 @@
 				</div>						
 			</div>
 			<div class="map">
-				<div id="map_canvas" style="width: 480px; height: 480px;">&nbsp;</div>
+				<div id="map_canvas" style="width: 100%; height: 100%;">&nbsp;</div>
 				<div id="toasterPlace"></div>
 			</div>
 			<div class="actions">
