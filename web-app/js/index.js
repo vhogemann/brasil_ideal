@@ -104,7 +104,7 @@ function center( map ){
 	}
 }
 
-jQuery(function($) {
+$(document).ready( function() {
 	initialize();
 	
 	function loadOnMap(address) {
@@ -230,15 +230,16 @@ jQuery(function($) {
 
         e.preventDefault();
     });
-    $(window).trigger("resize");
-    $(window).resize(function() {
+    
+    function resizeMap() {
     	var header = $("#header").height();
     	var footer = $("#footer").height();
     	var total = $(window).height() - (header + footer);  
     	$(".map").height(total);
-    });
+    }
+    
+    $(window).resize(resizeMap());
+    
+    resizeMap();
     	
-    
-    
-    
 });

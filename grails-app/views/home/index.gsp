@@ -18,7 +18,7 @@
 					<input type="text" id="searchKey" class="searchKey" name="searchKey" />
 				</label>
 				<span class="search">
-					<input class="bt" type="submit" value="pesquisar" />
+					<input class="bt" type="button" value="pesquisar" />
 				</span>
 			</fieldset>
 		</div>
