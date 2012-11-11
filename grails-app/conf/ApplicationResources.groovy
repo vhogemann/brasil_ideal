@@ -4,6 +4,10 @@ modules = {
    jquery {
 		resource url: '/js/jquery-1.8.2.js', disposition: 'head'
    }
+
+   functions {
+      resource url: 'js/functions.js', disposition: 'head'
+   }
    
    bootstrapcss {
 	   resource url: '/css/bootstrap.min.css'

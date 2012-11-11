@@ -232,7 +232,11 @@ jQuery( function($) {
 
     $('#close-game-list').click(function(e) {
         $('#games-list').fadeOut('slow'); 
-    })
+    });
+
+    $('#close-helper').click(function() {
+        $('.helper').fadeOut('slow'); 
+    });
 
     $('#games-list a').click(function(e) {
         clearMarkers(); holdNearSearch=true;
@@ -256,16 +260,7 @@ jQuery( function($) {
         e.preventDefault();
     });
     
-    function resizeMap() {
-    	var header = $("#header").height();
-    	var footer = $("#footer").height();
-    	var total = $(window).height() - (header + footer);  
-    	$(".map").height(total);
-    }
-    
-    $(window).resize(resizeMap());
-    window.onresize = function(event) {
-    	resizeMap();
-    }
-    resizeMap();
+    $(window).resize( resizeElementToFullScreen( $(".map") ) );
+
+    resizeElementToFullScreen( $(".map") );
 });
