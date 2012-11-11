@@ -91,10 +91,19 @@ class GameController {
         redirect(action: "show", id: gameInstance.id)
     }
 	def auth(){
-		
+		if(params.message){
+			["messageError": params.message]
+		}
 	}
 	
-	def validateAuth(){
+	def validateAuth(String email){
+		if(User.findByEmail(email)){
+			session.isUser = true
+			redirect(action: "create")
+		}else{
+			redirect(action: "auth", params:["message":message(code:"game.email.not.found", default: "Mail not found.")])
+		}
+		
 		
 	}
 		
