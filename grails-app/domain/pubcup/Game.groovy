@@ -20,13 +20,11 @@ class Game {
 	}
 	
 	def formattedDate() {
-		def date = new Date()
 		def formattedDate = date.format("yyyy-MM-dd")
 		formattedDate.toString()
 	}
 	
 	def formattedTime() {
-		def date = new Date()
 		def formattedTime = date.format("HH:mm")
 		formattedTime.toString()
 	}
