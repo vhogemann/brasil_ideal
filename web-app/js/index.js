@@ -14,13 +14,9 @@ function initialize() {
         scaleControl: false,
         streetViewControl: false,
         overviewMapControl: false,
-        mapTypeControl: false
-        , panControl: false
-        , zoomControl: false
-        , zoomControlOptions: {
-        	position: google.maps.ControlPosition.BOTTOM_RIGHT,
-        	style: google.maps.ZoomControlStyle.SMALL
-        }
+        mapTypeControl: false,
+        panControl: false,
+        zoomControl: false
     };
  
     map = new google.maps.Map(document.getElementById("map_canvas"), options);
@@ -137,6 +133,8 @@ function center( map ){
 }
 
 $(document).ready( function() {
+	$("body").addClass("home");
+	
 	initialize();
 	
 	function loadOnMap(address) {
@@ -239,6 +237,7 @@ $(document).ready( function() {
     }
 
 	$('#bt_show_game_list').click(function(e) {
+		$(".infobar").show();
         $('#games-list').fadeToggle('slow');
     });
 
