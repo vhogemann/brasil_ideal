@@ -45,6 +45,9 @@
        		</div>
 			<div class="ev-list">
 				<ul class="event-list">
+					<g:if test="${!events}">
+						<li><g:message code="game.extras.no.registered" default="There is no item registered."/></li>
+					</g:if>
 					<g:each in="${events}" var="event">
 						<li>
 							<span class="vs1">
