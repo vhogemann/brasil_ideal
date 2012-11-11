@@ -6,8 +6,8 @@ modules = {
 	}
    bootstrap {
 	   dependsOn 'jquery'
-	   resource url: '/css/bootstrap.min.css'
-	   resource url: '/css/bootstrap-responsive.min.css'
+//	   resource url: '/css/bootstrap.min.css'
+//	   resource url: '/css/bootstrap-responsive.min.css'
 	   resource url: 'js/bootstrap.min.js'
    }
    googlemaps {
@@ -30,7 +30,7 @@ modules = {
    }
    index {
    		dependsOn 'jqueryui','countdown'
-   		resource url: 'js/index.js?13213123'
+   		resource url: 'js/index.js'
    }
    games {
     dependsOn 'jqueryui'
