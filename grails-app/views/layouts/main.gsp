@@ -45,21 +45,21 @@
 			</div>
 			<div id="footer" role="contentinfo">
 				<div id="fb-root"></div>
-				<div class="fb-like" data-href="http://pubcup.com" data-send="true" data-width="450" data-show-faces="true"></div>
+				<div class="fb-like" data-href="http://pubcup.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
 			</div>
 		</div>
 
 		<div id="spinner" class="spinner" style="display:none;">Loading&hellip;</div>
 		
 		<r:layoutResources />
-		<script>
-			(function(d, s, id) {
-		  		var js, fjs = d.getElementsByTagName(s)[0];
-		  		if (d.getElementById(id)) return;
-		  		js = d.createElement(s); js.id = id;
-		  		js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-		  		fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=107271416014120";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 		</script>
 	</body>
 </html>
