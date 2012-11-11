@@ -21,6 +21,17 @@ class LocationController {
         params.address = URLDecoder.decode(params.address, "iso-8859-1")
         [params:params,locationInstance: new Location(params)]
     }
+	
+	def create2() {
+		params.address = params.address
+		render(view: "create", model: [locationInstance: new Location(params)])
+		
+	}
+	
+	def create3() {
+		params.address = URLDecoder.decode(params.address, "UTF-8")
+		render(view: "create", model: [locationInstance: new Location(params)])
+	}
 
     def save() {
         def locationInstance = new Location()

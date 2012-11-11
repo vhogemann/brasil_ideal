@@ -1,4 +1,3 @@
-<span id="close">[x]</span>
 <div class="local-data">
 	<h2 class="tit">
 		${location?.name}
