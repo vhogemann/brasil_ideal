@@ -37,7 +37,7 @@
 		<div id="page">
 			<div id="header">
 				<div class="header">
-					<h1 class="logo"><a href="/" class="lnk">PubCup</a></h1>
+					<h1 class="logo"><a href="${createLink(uri: '/') }" class="lnk">PubCup</a></h1>
 				</div>
 			</div>
 			<div id="content">

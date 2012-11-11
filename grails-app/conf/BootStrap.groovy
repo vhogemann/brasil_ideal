@@ -45,6 +45,12 @@ class BootStrap {
         new Location(name: 'Bar do Adão - Tijuca', description: 'Mais de sessenta tipos de pastéis em um só lugar', address: 'Rua dos Artistas, 130', location:[-22.917508d,-43.237832d]).save()
         new Location(name: 'Bar do Adonis', description: 'Os pratos são preparados com os melhores produtos de procedência qualificada  para garantir a qualidade do sabor especial que só aqui você encontra.', address: 'Shopping Nova América', location:[22.873012d,-43.270168d]).save()
 
+
+        //Massa de Dados Internacional
+        new Location(name: 'Owln Thistle Irish Pub', description: 'Another fantastic happy hour in the area', address: '808 Post Ave - Seattle, WA 98104', location:[-47.603241d,-122.335649d]).save()
+		new Location(name: 'Fado Irish Pub & Restaurant', description: 'Anyhow, the happy hour was excellent', address: '801 1st AveSeattle, WA 98104', location:[-47.603241d,-122.335649d]).save()
+		new Location(name: 'Uber Tavern', description: 'Awesome selection of booze! Was surprised they carried my favorite high-caffeine drink from college', address: '7517 Aurora Ave Seattle, WA 98103', location:[-47.603241d,-122.335649d]).save()
+
 		Game.list(max: 2).each { game ->
 			def loc = Location.findByName('Esch Café')
 			new Event(game: game, location:loc).save()

@@ -1,18 +1,20 @@
 <div class="toast">
 	<div class="local-data">
 		<h2 class="tit">
-			<g:link controller="location" action="show" id="${location.id}">
-	    		${location?.name}
-	    	</g:link>
+			${location?.name}
 		</h2>
 		<div class="adr">
 			<address>
 				<span class="street">${location.address}</span>
 				<g:if test="${location.phone}">
-					<span class="phone">(21) 00000000</span>
+					<span class="phone">${location.phone}</span>
 				</g:if>
 			</address>
 		</div>
+		<div class="toastDateGroup">
+            <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
+            <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>
+        </div>
 	</div>
 	
     <g:if test="${event}">
@@ -22,8 +24,8 @@
 				<div class="event">
 					<span class="vs1">
 						<span class="flag">
-							<span class="${event?.game?.teamA()}">bandeira do pais</span>
-							<strong class="name">${event?.game?.teamA()}</strong>
+							<span class="${event.game?.teamA()?.code?.toLowerCase()}">bandeira do pais</span>
+							<strong class="name">${event.game?.teamA()?.name?.encodeAsHTML()}</strong>
 						</span>
 					</span>
 					<span class="score">
@@ -33,8 +35,8 @@
 					</span>
 					<span class="vs2">
 						<span class="flag">
-							<span class="${event?.game?.teamB()}">bandeira do pais</span>
-							<strong class="name">${event?.game?.teamB()}</strong>
+							<span class="${event.game?.teamB()?.code?.toLowerCase()}">bandeira do pais</span>
+							<strong class="name">${event.game?.teamB()?.name?.encodeAsHTML()}</strong>
 						</span>
 					</span>
 				</div>
@@ -47,8 +49,8 @@
 							<li>
 								<span class="vs1">
 									<span class="flag">
-										<span class="${event?.game?.teamA()}">bandeira do pais</span>
-										<strong class="name">${event?.game?.teamA()}</strong>
+										<span class="${event.game?.teamA()?.code?.toLowerCase()}">bandeira do pais</span>
+										<strong class="name">${event.game.teamA()?.name?.encodeAsHTML()}</strong>
 									</span>
 								</span>
 								<span class="score">
@@ -58,8 +60,8 @@
 								</span>
 								<span class="vs2">
 									<span class="flag">
-										<span class="${event?.game?.teamB()}">bandeira do pais</span>
-										<strong class="name">${event?.game?.teamB()}</strong>
+										<span class="${event?.game?.teamB()?.code?.toLowerCase()}">bandeira do pais</span>
+										<strong class="name">${event?.game?.teamB()?.name?.encodeAsHTML()}</strong>
 									</span>
 								</span>
 							</li>
@@ -68,10 +70,9 @@
 				</div>
 			</div>
 		</div>
-        
-        <div class="toastDateGroup">
-            <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
-            <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>
-        </div>
-    </g:if>
+	</g:if>
+	<div class="event-action">
+		<span class="add-event"><g:link controller="location" action="associate" id="${location.id}" class="bt">Adicionar Jogo</g:link></span>
+		<span class="more-info"><g:link controller="location" action="show" id="${location.id}" class="bt">Mais Informações</g:link></span>
+	</div>
 </div>
