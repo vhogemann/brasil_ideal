@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4IksXZ28CC_-yj4212aQ9WlVeq2RbbPA&sensor=true"></script>
-		<r:require module="index" />
+		<r:require modules="index, bootstrap" />
 		<r:require module="countdown" />
 		<r:require module="kkcountdown" />
 		<script type="text/javascript">
@@ -12,31 +12,31 @@
 				started: 'O evento começou a '
 			};
 		</script>
-		<script src="js/moment.min.js"></script>
-		<script src="js/lang/pt-br.js"></script>
-		<script type="text/javascript">
-			moment.lang('pt-br');
-			function reloadCountDown(){
-				var min = 60;
-				var hor = 60 * min;
-				var dia = hor * 24;
-				setInterval(function(){
-					$(".kkcount-down").each(function(){
-						var diffTime = parseInt($(this).attr("time"));
-						var targetDate = new Date((new Date().getTime() + diffTime));
-						var b = moment();
-						var a = moment(targetDate);
-						var seconds = a.diff(b, 'seconds');
-						if(seconds > 0){
-							$(this).text(msgs.start + a.fromNow());
-						}else{
-							$(this).text(msgs.started + a.fromNow());
-						}
+		 <script src="js/moment.min.js"></script>
+		 <script src="js/lang/pt-br.js"></script>
+		 <script type="text/javascript">
+		 	moment.lang('pt-br');
+		 	function reloadCountDown(){
+		 		var min = 60;
+		 		var hor = 60 * min;
+		 		var dia = hor * 24;
+		 		setInterval(function(){
+		 			$(".kkcount-down").each(function(){
+		 				var diffTime = parseInt($(this).attr("time"));
+		 				var targetDate = new Date((new Date().getTime() + diffTime));
+		 				var b = moment();
+		 				var a = moment(targetDate);
+		 				var seconds = a.diff(b, 'seconds');
+		 				if(seconds > 0){
+		 					$(this).text(msgs.start + a.fromNow());
+		 				}else{
+		 					$(this).text(msgs.started + a.fromNow());
+		 				}
 						
-					});
-				}, 1000);
-			}
-		</script>
+		 			});
+		 		}, 1000);
+		 	}
+		 </script>
 	</head>
 	<body>
 		<form action="" method="get" onsubmit="return false;">
