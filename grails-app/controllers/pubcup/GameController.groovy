@@ -90,7 +90,23 @@ class GameController {
         flash.message = message(code: 'default.updated.message', args: [message(code: 'game.label', default: 'Game'), gameInstance.id])
         redirect(action: "show", id: gameInstance.id)
     }
-
+	def auth(){
+		if(params.message){
+			["messageError": params.message]
+		}
+	}
+	
+	def validateAuth(String email){
+		if(User.findByEmail(email)){
+			session.isUser = true
+			redirect(action: "create")
+		}else{
+			redirect(action: "auth", params:["message":message(code:"game.email.not.found", default: "Mail not found.")])
+		}
+		
+		
+	}
+		
     def delete(Long id) {
         def gameInstance = Game.get(id)
         if (!gameInstance) {

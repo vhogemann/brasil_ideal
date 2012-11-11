@@ -10,7 +10,17 @@ function initialize() {
     var options = {
         zoom: 5,
         center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
+        mapTypeControl: false
+        , panControl: false
+        , zoomControl: false
+        , zoomControlOptions: {
+        	position: google.maps.ControlPosition.BOTTOM_RIGHT,
+        	style: google.maps.ZoomControlStyle.SMALL
+        }
     };
  
     map = new google.maps.Map(document.getElementById("map_canvas"), options);
@@ -259,7 +269,9 @@ $(document).ready( function() {
     }
     
     $(window).resize(resizeMap());
-    
+    window.onresize = function(event) {
+    	resizeMap();
+    }
     resizeMap();
-    	
+    
 });
