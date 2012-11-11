@@ -11,11 +11,11 @@ class Game {
 		
 	static mapWith = "mongo"
 	
-	def teamA() {
+	TeamsEnum teamA() {
 		teams?.first()
 	}
 	
-	def teamB() {
+	TeamsEnum teamB() {
 		teams?.last()
 	}
 	
