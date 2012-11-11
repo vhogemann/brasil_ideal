@@ -23,12 +23,6 @@ function initialize() {
  
     geocoder = new google.maps.Geocoder();
  
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-    });
- 
-    marker.setPosition(latlng);
     google.maps.event.addListener(map,'center_changed', function(){
         holdNearSearch = false;
     });
@@ -162,18 +156,6 @@ $(document).ready( function() {
         	loadOnMap($(this).val());
     });
 	
-	google.maps.event.addListener(marker, 'drag', function () {
-        geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                	$('#searchKey').val(results[0].formatted_address);
-                	$('#txtLatitude').val(marker.getPosition().lat());
-                	$('#txtLongitude').val(marker.getPosition().lng());
-                }
-            }
-        });
-    });
-    
 	$("#searchKey").autocomplete({
         source: function (request, response) {
         	ajax({
