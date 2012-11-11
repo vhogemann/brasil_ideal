@@ -1,4 +1,3 @@
-
 /*pubcup v0.1*/
 /*reset*/
 html,body,div,span,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,address,cite,em,img,q,strong,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;font-size:100%;font-family:inherit;font-weight:normal;border:0;}
@@ -21,8 +20,11 @@ input, textarea {font:normal 1em/1.2 arial,sans-serif;color:#888;border:1px soli
 #header {height:4.16em;background:#ccc;}
 h1 {font-weight:bold;font-size:2em;padding:10px;}
 
-.search-area {position:absolute;top:10px;right:10px;z-index:10;}
-.search-area .bt {background:#f60;}
+.search-area {position:absolute;top:10px;right:10px;left:120px;z-index:10;}
+.search-area .bt {background:#f60;position:absolute;right:0;top:0;}
+.search-area fieldset {background:#fff;padding-right:100px;position:relative;padding-bottom:1px;}
+.searchKey {padding:5px 0;width:99%;border:0;}
+.search-area .lbl {display:none;}
 
 .local-data .tit {color:#fff;font-weight:bold;font-size:1.333em;}
 .local-data address {font-style:normal;}
@@ -37,6 +39,7 @@ h1 {font-weight:bold;font-size:2em;padding:10px;}
 .actions .bt {background:#f60;}
 
 .event, .event-list {overflow:hidden;padding:10px 10px 10px 50px;}
+.event-list {border:1px solid #333;}
 .event-data .vs1,.event-data .vs2 {display:block;width:40%;}
 
 .event-data .score {width:20%;margin:0 10px;text-align:center;float:left;white-space:nowrap;}
@@ -47,7 +50,7 @@ h1 {font-weight:bold;font-size:2em;padding:10px;}
 
 .event .flag .br {background-position:0 0;}
 .event .flag .us {background-position:0 -500px;}
-.event-data .name {display:block;margin-top:10px;color:#fff;}
+.event-data .name {display:block;margin-top:5px;color:#fff;}
 
 .event-data .score .value {font-size:3em;color:#fff;}
 .event-data .score .vs {font size:2em;padding:0 20px}
@@ -56,11 +59,8 @@ h1 {font-weight:bold;font-size:2em;padding:10px;}
 .event-list .flag .br {background-position:0 -800px}
 .event-list .flag .us {background-position:0 -1300px}
 
-.event-list  li{}
-.event-list  li:after {content:'';display:block;clear:both;margin-bottom:5px;}
-
-#map_canvas {width:100%;height:700px;background:url(../img/mapa-temp.png);}
-
+.event-list li{margin-bottom:10px}
+.event-list li:after {content:'';display:block;clear:both;margin-bottom:5px;}
 
 /* Large desktop 
 @media (min-width: 1200px) {
