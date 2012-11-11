@@ -9,7 +9,7 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<h2>Cadastrar Localização</h2>
+		<h2 style=""><g:message code='create.location' default="Register Pub"/></h2>
 		<hr>
 		<g:if test="${flash.message}">
 		<div class="message" role="status">${flash.message}</div>
@@ -35,7 +35,7 @@
 			</ul>
 			<hr>
 			<div class="form-actions well">
-				<input type="submit" class="btn" value="${message(code: 'default.button.create.label', default: 'Create')}">
+				<input type="submit" class="btn" value="<g:message code='create.location' default='Register Pub'/> ">
 			</div>	
 		</form>
 	</body>

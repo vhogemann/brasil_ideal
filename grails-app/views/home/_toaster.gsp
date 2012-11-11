@@ -27,7 +27,7 @@
 				<span class="vs1">
 					<span class="flag">
 						<span class="${event.game?.teamA()?.code?.toLowerCase()}"></span>
-						<strong class="name">${event.game?.teamA()?.name?.encodeAsHTML()}</strong>
+						<strong class="name">${event.game?.teamA()?.code?.encodeAsHTML()}</strong>
 					</span>
 				</span>
 				<span class="score">
@@ -36,7 +36,7 @@
 				<span class="vs2">
 					<span class="flag">
 						<span class="${event.game?.teamB()?.code?.toLowerCase()}"></span>
-						<strong class="name">${event.game?.teamB()?.name?.encodeAsHTML()}</strong>
+						<strong class="name">${event.game?.teamB()?.code?.encodeAsHTML()}</strong>
 					</span>
 				</span>
 			</div>
@@ -50,7 +50,7 @@
 							<span class="vs1">
 								<span class="flag">
 									<span class="${event.game?.teamA()?.code?.toLowerCase()}"></span>
-									<strong class="name">${event.game.teamA()?.name?.encodeAsHTML()}</strong>
+									<strong class="name">${event.game.teamA()?.code?.encodeAsHTML()}</strong>
 								</span>
 							</span>
 							<span class="score">
@@ -59,7 +59,7 @@
 							<span class="vs2">
 								<span class="flag">
 									<span class="${event?.game?.teamB()?.code?.toLowerCase()}"></span>
-									<strong class="name">${event?.game?.teamB()?.name?.encodeAsHTML()}</strong>
+									<strong class="name">${event?.game?.teamB()?.code?.encodeAsHTML()}</strong>
 								</span>
 							</span>
 						</li>

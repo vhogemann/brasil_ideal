@@ -6,7 +6,7 @@ class Game {
 	List teams
 	
 	String toString(){
-		teams?.join(" x ")
+		"${teamA().code} x ${teamB().code}"
 	}
 		
 	static mapWith = "mongo"
