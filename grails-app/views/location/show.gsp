@@ -68,6 +68,9 @@
 		<div class="span12">
 			<h3>Outros jogos <g:link controller="location" action="associate" id="${locationInstance?.id }" class="btn btn-small" ><i class="icon-plus">+</i></g:link></h3> 
 			<div class="span6 othersGames">
+				<g:if test="${!events}">
+						<li><g:message code="game.no.registered" default="There is no item registered."/></li>
+					</g:if>
 				<g:each in="${locationInstance.events}" var="event">
 					<div class="span6">
 						<div class="teams"><img src="${resource(dir: 'images', file: 'grails_logo.jpg')}" class="team"/></div>
