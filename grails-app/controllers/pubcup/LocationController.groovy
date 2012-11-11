@@ -153,6 +153,7 @@ class LocationController {
 			location.save()
 			render(text: "true")
 		} catch (Exception e) {
+			log.error "Ocorreu um erro ao atualizar a descricao da localidade", e
 			render(text: "false")
 		}
 	}

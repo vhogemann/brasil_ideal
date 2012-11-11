@@ -77,6 +77,7 @@ h1 {font-weight:bold;font-size:2em;padding:10px;}
 .event-list .flag .ita {background-position:0 -1400px;}
 .event-list .flag .nzl {background-position:0 -1500px;}
 
+#close {font-weight:bold;position:absolute;top:10px;right:10px;font-size:1.5em;cursor:pointer;}
 
 /* Large desktop 
 @media (min-width: 1200px) {

@@ -246,8 +246,9 @@ $(document).ready( function() {
         var id      = this.id.replace(/[a-z_]+/,'');
         var data    = {};
 
-        if( id != null && id != "" )
-            data = { id : id };
+        if( id != null && id != "" ) {
+        	data = { id : id };
+        }
 
         $.ajax({
             type: "GET",
@@ -274,5 +275,8 @@ $(document).ready( function() {
     	resizeMap();
     }
     resizeMap();
-    
+   
+	$("#close").click( function(){
+    	$(".infobar").fadeOut();
+	});
 });
