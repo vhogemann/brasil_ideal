@@ -15,8 +15,6 @@
 			<span id="editMessage"><g:message code="location.description.edit" /></span>
 			<g:hiddenField name="locationId" value="${locationInstance.id}" id="locationId"/>
 		</div>
-<<<<<<< HEAD
-		
 		<div class="events">
 			<div class="event-head">
 				<h2 class="">Outros jogos</h2>
@@ -25,14 +23,6 @@
 				</span>
 			</div>
 			<ul class="event-list">
-=======
-		<div class="span12">
-			<h3>Outros jogos <g:link controller="location" action="associate" id="${locationInstance?.id }" class="btn btn-small" ><i class="icon-plus">+</i></g:link></h3> 
-			<div class="span6 othersGames">
-				<g:if test="${!events}">
-						<li><g:message code="game.no.registered" default="There is no item registered."/></li>
-					</g:if>
->>>>>>> d816a9a1cd3d136cfbf4e8d3443a5635045cd8d3
 				<g:each in="${locationInstance.events}" var="event">
 					<li>
 						<span class="vs1">
