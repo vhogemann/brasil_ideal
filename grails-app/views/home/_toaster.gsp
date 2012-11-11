@@ -15,7 +15,6 @@
             <span id="toastDate"><g:message code="date" default="Date" /> : ${event?.game?.formattedDate()}</span>
             <span id="toastTime"><g:message code="time" default="Time" /> : ${event?.game?.formattedTime()}</span>
         </div>
-        ${event?.game?.date}
 	</g:if>
 </div>
 
