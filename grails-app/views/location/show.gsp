@@ -1,5 +1,4 @@
 <%@ page import="pubcup.Location" %>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,7 +18,9 @@
 			<div class="event-head">
 				<h2 class="">Outros jogos</h2>
 				<span class="add-event">
-					<g:link controller="location" action="associate" id="${locationInstance?.id }" class="bt">+ Adicionar Evento</g:link>
+					<g:link controller="location" action="associate" id="${locationInstance?.id }" class="bt">
+						<g:message code="add.event" default="Add event"/>
+					</g:link>
 				</span>
 			</div>
 			<ul class="event-list">
