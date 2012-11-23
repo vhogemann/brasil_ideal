@@ -6,7 +6,7 @@ modules = {
    }
 
    functions {
-      resource url: 'js/functions.js', disposition: 'head'
+      resource url: 'js/functions.js?token=1123', disposition: 'head'
    }
    
    bootstrapcss {

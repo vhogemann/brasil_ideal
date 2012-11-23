@@ -47,11 +47,11 @@
 				<div id="fb-root"></div>
 				<div class="fb-like" data-href="http://pubcup.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
 			</div>
-			<div class="helper" style="position:absolute;z-index:999;top:4.16em;left:0;background-color:#fff;width:100%;display:none;">
-				<span id="close-helper" style="font-weight:bold;position:absolute;top:10px;right:30px;font-size:1.4em;cursor:pointer">[x]</span>
-				<h1 class="logo" style="width:80%;margin:0px auto;"><span class="lnk">PubCup</span></h1>
-				<hr style="color:#ccc;width:80%;margin-bottom:20px;" />
-				<p style="width:80%;margin:0px auto;font-size:14px"><g:message code="index.helper.welcome.text" default="Address" /></p>
+			<div class="helper-page">
+				<span id="close-helper">[x]</span>
+				<h1 class="logo-big"><span class="lnk">PubCup</span></h1>
+				<hr  />
+				<p><g:message code="index.helper.welcome.text" default="Address" /></p>
 			</div>
 		</div>
 

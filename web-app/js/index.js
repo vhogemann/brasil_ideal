@@ -234,10 +234,6 @@ jQuery( function($) {
         $('#games-list').fadeOut('slow'); 
     });
 
-    $('#close-helper').click(function() {
-        $('.helper').fadeOut('slow'); 
-    });
-
     $('#games-list a').click(function(e) {
         clearMarkers(); holdNearSearch=true;
         var id      = this.id.replace(/[a-z_]+/,'');
