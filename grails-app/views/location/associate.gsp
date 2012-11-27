@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'event.label', default: 'Event')}" />
+		<g:set var="entityName" value="<g:message code='event.label' default='Event'/>" />
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -50,7 +50,9 @@
 							</li>
 						</g:each>
 					</ul>
-					<span class="create-event"><input class="bt" type="submit" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+					<span class="create-event">
+						<input class="bt" type="submit" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					</span>
 				</fieldset>
 			</g:form>
 		</div>
