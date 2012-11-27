@@ -27,21 +27,24 @@ function initialize() {
         holdNearSearch = false;
     });
 
+    google.maps.event.addListener(map,'bounds_changed', function(){
+         
+    });
     window.setInterval(function() {
-        if(!holdNearSearch) {
+	   if(!holdNearSearch) {
             var bound = map.getBounds();
-            var lat1 = bound.ca.f;
-            var long1 = bound.ca.b;
-            var lat2 = bound.ea.f;
-            var long2 = bound.ea.b;
+            var lat1 = bound.getNorthEast().lat();
+            var long1 = bound.getNorthEast().lng();
+            var lat2 = bound.getSouthWest().lat();
+            var long2 = bound.getSouthWest().lng();
             ajax({
                 url : config.contextPath + "/home/near/",
                 data : {lat1:lat1 , long1:long1 , lat2:lat2, long2:long2},
                 traditional : true,
                 success : plotLocations
             });
-        }	
-	}, 5000);
+        }   
+    }, 5000);
 }
 
 function plotLocations(locations){
