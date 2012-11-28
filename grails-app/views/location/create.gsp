@@ -35,7 +35,7 @@
 			</ul>
 			<hr>
 			<div class="form-actions well">
-				<input type="submit" class="btn" value="<g:message code='create.location' default='Register Pub'/> ">
+				<input type="submit" class="bt" value="<g:message code='create.location' default='Register Pub'/> ">
 			</div>	
 		</form>
 	</body>

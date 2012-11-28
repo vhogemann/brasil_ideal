@@ -17,8 +17,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
-<%--		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">--%>
-<%--		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">--%>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'style.css')}" type="text/css">
 		
 		<r:require module="bootstrap"/>
@@ -61,7 +59,8 @@
 		
 		<r:layoutResources />
 		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
+		<script>
+		(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
 		  if (d.getElementById(id)) return;
 		  js = d.createElement(s); js.id = id;
